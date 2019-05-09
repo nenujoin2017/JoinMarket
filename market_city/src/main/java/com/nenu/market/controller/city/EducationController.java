@@ -15,7 +15,7 @@ public class EducationController{
     EducationService educationService;
 
     /**
-     * 遍历education
+     * 遍历
      * @param model
      * @return
      */
