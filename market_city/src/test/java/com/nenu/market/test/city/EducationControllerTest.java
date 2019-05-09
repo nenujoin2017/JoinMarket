@@ -1,4 +1,4 @@
-package com.nenu.market.controller.city;
+package com.nenu.market.test.city;
 
 import com.nenu.market.entity.city.Education;
 import com.nenu.market.service.city.EducationService;
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @CrossOrigin
 @RestController
-@RequestMapping("/testBoot")
-public class EducationController{
+@RequestMapping("/testBoot3")
+public class EducationControllerTest{
     @Autowired
     EducationService educationService;
 
@@ -19,7 +19,7 @@ public class EducationController{
      * @param model
      * @return
      */
-    @RequestMapping(value = "/listAll")
+    @RequestMapping(value = "/listAll3")
     public List<Education> educationList(Model model){
         List<Education> list = null;
         try {
@@ -31,7 +31,7 @@ public class EducationController{
         return list;
     }
 
-    @RequestMapping(value = "/selectEducationByKeyword")
+    @RequestMapping(value = "/selectEducationByKeyword3")
     public List<Education> selectEducationByKeyword(String keyword,Model model){
         List<Education> resultList1 = null;
         try {
@@ -45,3 +45,4 @@ public class EducationController{
     }
 
 }
+
