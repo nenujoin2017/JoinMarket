@@ -1,0 +1,17 @@
+spring:
+  profiles:
+    active: dev
+  datasource:
+    username: root
+    password: mysql
+    url: jdbc:mysql://localhost:3306/db_nenu_market?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+server:
+  port: 8088
+
+mybatis:
+  mapper-locations: classpath:com/nenu/market/mapper/*/*.xml
+  type-aliases-package: com.nenu.market.entity
+
+

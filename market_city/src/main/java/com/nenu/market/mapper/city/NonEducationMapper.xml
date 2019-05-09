@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nenu.market.mapper.city.NonEducationMapper">
+    <resultMap id="NonEducationMapper" type="com.nenu.market.entity.city.Education">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="year" jdbcType="INTEGER" property="year" />
+        <result column="province" jdbcType="VARCHAR" property="province" />
+        <result column="city_code" jdbcType="INTEGER" property="city_code" />
+        <result column="city_name" jdbcType="VARCHAR" property="city_name" />
+        <result column="city_exceptation" jdbcType="VARCHAR" property="city_exception" />
+        <result column="city_sign" jdbcType="VARCHAR" property="city_sign" />
+        <result column="city_studentFrom" jdbcType="VARCHAR" property="city_studentFrom" />
+        <result column="city_visit" jdbcType="VARCHAR" property="city_visit" />
+        <result column="city_recency" jdbcType="VARCHAR" property="city_recency" />
+        <result column="city_grading" jdbcType="VARCHAR" property="city_grading" />
+        <result column="city_score" jdbcType="DOUBLE" property="city_score" />
+        <result column="city_unit" jdbcType="INTEGER" property="city_unit" />
+        <result column="education_yon" jdbcType="VARCHAR" property="education_yon" />
+    </resultMap>
+
+    <!--遍历-->
+    <select id="listAll2" resultType="com.nenu.market.entity.city.Education">
+        select `year`,t_city.id,`city_name`,`province`,`city_exceptation`,`city_sign`,`city_studentFrom`,
+        `city_visit`,`city_recency`,`city_grading`,`city_score`
+        from `t_city`,`t_province`
+        where t_city.city_name = t_province.city and t_city.education_yon = 0
+    </select>
+
+
+    <!--根据关键字查询-->
+    <select id="selectEducationByKeyword" resultType="com.nenu.market.entity.city.Education">
+        select * from (select `year`,t_city.id,`city_name`,`province`,`city_exceptation`,`city_sign`,`city_studentFrom`,
+        `city_visit`,`city_recency`,`city_grading`,`city_score`
+        from `t_city`,`t_province`
+        where t_city.city_name = t_province.city and t_city.education_yon = 0 ) as table2 where
+        `city_name` LIKE CONCAT('%',#{keyword},'%')
+        OR `city_score`LIKE CONCAT('%',#{keyword},'%')
+    </select>
+</mapper>

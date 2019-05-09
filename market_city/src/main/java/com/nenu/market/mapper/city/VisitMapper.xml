@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nenu.market.mapper.city.VisitMapper">
+    <resultMap id="VisitMapper" type="com.nenu.market.entity.city.Education">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="year" jdbcType="INTEGER" property="year" />
+        <result column="province" jdbcType="VARCHAR" property="province" />
+        <result column="city_name" jdbcType="VARCHAR" property="city_name" />
+        <result column="city_visit" jdbcType="VARCHAR" property="city_visit" />
+        <result column="education_yon" jdbcType="VARCHAR" property="education_yon" />
+    </resultMap>
+
+    <!--遍历-->
+    <select id="listAll1" resultType="com.nenu.market.entity.city.Education">
+        select *
+        from `t_city` as one,`t_totalvisit` as two,`t_province` as three
+        where one.city_code = two.city_code and one.city_name = three.city
+    </select>
+
+    <!--根据教育类或非教育类查询-->
+    <select id="selectByEducationYon" resultType="com.nenu.market.entity.city.Education">
+        select * from `t_city` where `education_yon`=#{education_yon}
+    </select>
+
+    <!--根据城市名查询-->
+    <select id="selectByCityName" resultType="com.nenu.market.entity.city.Education">
+        select * from t_city where
+        `city_name` LIKE CONCAT('%',#{city_name},'%')
+    </select>
+
+</mapper>
