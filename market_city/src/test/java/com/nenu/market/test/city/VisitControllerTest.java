@@ -2,6 +2,7 @@ package com.nenu.market.test.city;
 
 import com.nenu.market.entity.city.Education;
 import com.nenu.market.service.city.VisitService;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,7 @@ public class VisitControllerTest {
      * @param model
      * @return
      */
+    @Test
     @RequestMapping(value = "/listAll5")
     public List<Education> visitList(Model model) {
         List<Education> list = null;
@@ -37,6 +39,7 @@ public class VisitControllerTest {
      * @param model
      * @return
      */
+    @Test
     @RequestMapping(value = "/selectByEducationYon5")
     public List<Education> visitList1(String education_yon,Model model){
         List<Education> list1 = null;
@@ -55,6 +58,7 @@ public class VisitControllerTest {
      * @param model
      * @return
      */
+    @Test
     @RequestMapping(value = "/selectByCityName")
     public List<Education> visitList2(String city_name,Model model){
         List<Education> list2 = null;

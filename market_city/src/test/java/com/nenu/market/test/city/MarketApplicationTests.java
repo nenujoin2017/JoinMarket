@@ -1,4 +1,4 @@
-package com.nenu.market;
+package com.nenu.market.test.city;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

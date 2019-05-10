@@ -2,6 +2,7 @@ package com.nenu.market.test.city;
 
 import com.nenu.market.entity.city.Education;
 import com.nenu.market.service.city.EducationService;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,18 +20,21 @@ public class EducationControllerTest{
      * @param model
      * @return
      */
+    @Test
     @RequestMapping(value = "/listAll3")
     public List<Education> educationList(Model model){
         List<Education> list = null;
         try {
             list=educationService.listAll();
             model.addAttribute("educationList",list);
+            System.out.println(list);
         }catch (Exception e){
             e.printStackTrace();
         }
         return list;
     }
 
+    @Test
     @RequestMapping(value = "/selectEducationByKeyword3")
     public List<Education> selectEducationByKeyword(String keyword,Model model){
         List<Education> resultList1 = null;

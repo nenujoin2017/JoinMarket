@@ -2,6 +2,7 @@ package com.nenu.market.test.city;
 
 import com.nenu.market.entity.city.Education;
 import com.nenu.market.service.city.NonEducationService;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -22,18 +23,21 @@ public class NonEducationControllerTest {
      * @param model
      * @return
      */
+    @Test
     @RequestMapping(value = "/listAll4")
     public List<Education> nonEducationList(Model model){
         List<Education> list = null;
         try {
             list=nonEducationService.listAll();
             model.addAttribute("nonEducationList",list);
+            System.out.println(list);
         }catch (Exception e){
             e.printStackTrace();
         }
         return list;
     }
 
+    @Test
     @RequestMapping(value = "/selectEducationByKeyword4")
     public List<Education> selectEducationByKeyword(String keyword,Model model){
         List<Education> resultList1 = null;
