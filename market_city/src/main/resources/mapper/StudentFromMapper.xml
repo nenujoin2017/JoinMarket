@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nenu.market.mapper.studentFrom.StudentFromMapper">
+
+    <resultMap id="StudentFrom" type="com.nenu.market.entity.studentFrom.StudentFrom">
+        <result property="year" column="year"/>
+        <result property="city_name" column="city_name"/>
+        <result property="education_yon" column="education_yon"/>
+        <result property="city_studentFrom" column="city_studentFrom"/>
+        <result property="province" column="province"/>
+    </resultMap>
+
+    <select id="listStudentFrom" resultMap="StudentFrom">
+        SELECT `city_name`, `year`,`education_yon`, `city_studentFrom`,`province`
+        FROM `t_city`, `t_province`
+        where t_city.city_name = t_province.city
+    </select>
+
+    <select id="Select1" resultMap="StudentFrom">
+        SELECT `city_name`, `year`,`education_yon`, `city_studentFrom`,`province`
+        FROM `t_city`, `t_province`
+        where t_city.city_name = t_province.city AND education_yon = #{studentFrom.education_yon} AND year = #{studentFrom.year} AND city_name =#{studentFrom.city_name}
+    </select>
+
+    <select id="Select2" resultMap="StudentFrom">
+        SELECT `city_name`, `year`,`education_yon`, `city_studentFrom`,`province`
+        FROM `t_city`, `t_province`
+        where t_city.city_name = t_province.city AND education_yon = #{studentFrom.education_yon} AND year = #{studentFrom.year} AND city_studentFrom &lt; #{studentFrom.max} AND city_studentFrom &gt;= #{studentFrom.min}
+    </select>
+
+    <select id="Select3" resultMap="StudentFrom">
+        SELECT `city_name`, `year`,`education_yon`, `city_studentFrom`,`province`
+        FROM `t_city`, `t_province`
+        where t_city.city_name = t_province.city AND education_yon = #{studentFrom.education_yon} AND year = #{studentFrom.year} AND city_name =#{studentFrom.city_name} AND city_studentFrom &lt; #{studentFrom.max} AND city_studentFrom &gt;= #{studentFrom.min}
+    </select>
+
+    <select id="Select4" resultMap="StudentFrom">
+        SELECT `city_name`, `year`,`education_yon`, `city_studentFrom`,`province`
+        FROM `t_city`, `t_province`
+        where t_city.city_name = t_province.city AND education_yon = #{studentFrom.education_yon} AND year = #{studentFrom.year}
+    </select>
+</mapper>

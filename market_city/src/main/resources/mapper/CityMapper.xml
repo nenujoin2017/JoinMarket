@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nenu.market.mapper.city.CityMapper">
+
+    <resultMap id="City" type="com.nenu.market.entity.city.City">
+        <id property="id" column="id"/>
+        <result property="city_name" column="city_name"/>
+        <result property="year" column="year"/>
+        <result property="city_exceptation" column="city_exceptation"/>
+        <result property="city_sign" column="city_sign"/>
+        <result property="student_from" column="student_from"/>
+        <result property="city_visit" column="city_visit"/>
+        <result property="city_recency" column="city_recency"/>
+        <result property="city_grading" column="city_grading"/>
+        <result property="city_score" column="city_score"/>
+        <result property="city_unit" column="city_unit"/>
+        <result property="city_people" column="city_people"/>
+        <result property="education_yon" column="education_yon"/>
+    </resultMap>
+
+    <select id="listAllCity" resultMap="City">
+        select *
+        from `t_city`
+    </select>
+
+    <insert id="addCity">
+        INSERT INTO `t_city`
+        (city_name, year, city_exceptation, city_sign, city_studentFrom)
+        VALUES (#{City.city_name}, #{City.year}, #{City.city_exceptation}, #{City.city_sign}, #{City.city_studentFrom})
+    </insert>
+
+    <select id="selectByCityName" resultMap="City">
+        SELECT *
+        FROM t_city
+        WHERE t_city.city_name = #{city_name}
+    </select>
+
+    <update id="updateCityExpect">
+        UPDATE t_city
+        SET t_city.city_exceptation = #{city.city_exceptation}
+        WHERE t_city.city_name = #{city.city_name}
+    </update>
+
+    <update id="updateCitySign">
+        UPDATE t_city
+        SET t_city.city_sign = #{city.city_sign}
+        WHERE t_city.city_name = #{city.city_name}
+    </update>
+
+    <update id="updateCityStudentFrom">
+        UPDATE t_city
+        SET t_city.city_studentFrom = #{city.city_studentFrom}
+        WHERE t_city.city_name = #{city.city_name}
+    </update>
+
+</mapper>

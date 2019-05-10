@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nenu.market.mapper.returncity.ReturnCityMapper">
+
+    <resultMap id="ReturnCity" type="com.nenu.market.entity.returncity.ReturnCity">
+        <id property="id" column="id"/>
+        <result property="year" column="year"/>
+        <result property="city_name" column="city_name"/>
+        <result property="province" column="province"/>
+        <result property="visitCount" column="visitCount"/>
+        <result property="returnCount" column="returnCount"/>
+        <result property="education_yon" column="education_yon"/>
+    </resultMap>
+
+
+    <select id="listAllReturnCity" resultMap="ReturnCity">
+        SELECT `city_name`,`returnCount`,`year`,`visitCount`, `province`,`education_yon`
+        FROM `t_totalvisit`, `t_province`
+        where t_totalvisit.city_name = t_province.city
+    </select>
+
+    <select id="SelectCity1" resultMap="ReturnCity">
+        SELECT `city_name`, `returnCount`, `year`,`visitCount`, `province`,`education_yon`
+        FROM `t_totalvisit`, `t_province`
+        where t_totalvisit.city_name = t_province.city AND education_yon = #{returnCity.education_yon} AND year = #{returnCity.year} AND city_name =#{returnCity.city_name}
+    </select>
+
+    <select id="SelectCity2" resultMap="ReturnCity">
+        SELECT `city_name`, `returnCount`, `year`,`visitCount`, `province`,`education_yon`
+        FROM `t_totalvisit`, `t_province`
+        where t_totalvisit.city_name = t_province.city AND education_yon = #{returnCity.education_yon} AND year = #{returnCity.year}
+    </select>
+
+
+
+
+</mapper>
