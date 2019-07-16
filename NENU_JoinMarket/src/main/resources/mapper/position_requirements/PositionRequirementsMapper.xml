@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nenu.market.mapper.position_requirements.PositionRequirementsMapper">
+
+    <resultMap id="PositionRequirementsMapper" type="com.nenu.market.entity.position_requirements.PositionRequirements">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="company_name" jdbcType="VARCHAR" property="company_name" />
+        <result column="subject" jdbcType="VARCHAR" property="subject" />
+        <result column="education" jdbcType="VARCHAR" property="education" />
+        <result column="number" jdbcType="INTEGER" property="number" />
+        <result column="others" jdbcType="VARCHAR" property="others" />
+    </resultMap>
+
+    <!--增加一条岗位需求信息-->
+    <insert id="addPositionRequirements">
+        INSERT INTO t_position_requirements
+        VALUES (#{company_name},#{subject},#{education},#{number},#{others})
+    </insert>
+
+    <!--编辑一条岗位需求信息-->
+    <update id="updatePositionRequirements" >
+        UPDATE t_position_requirements
+        SET `company_name` = #{company_name},
+        `subject` = #{subject},
+        `education` = #{education},
+        `number` = #{number},
+        `others` = #{others}
+    </update>
+
+    <!--根据关键字查询一条岗位需求信息-->
+    <select id="queryPositionRequirementsByKeyword" resultType="com.nenu.market.entity.position_requirements.PositionRequirements">
+        SELECT * FROM t_position_requirements
+        WHERE  `company_name` LIKE concat('%',#{keyWord},'%')
+        OR `subject` LIKE concat('%',#{keyWord},'%')
+        OR `education` LIKE concat('%',#{keyWord},'%')
+        OR `number` LIKE concat('%',#{keyWord},'%')
+        OR `others` LIKE concat('%',#{keyWord},'%')
+    </select>
+
+    <!--遍历所有岗位需求信息-->
+    <select id="listAllPositionRequirements" resultType="com.nenu.market.entity.position_requirements.PositionRequirements">
+        SELECT * FROM t_position_requirements
+    </select>
+</mapper>

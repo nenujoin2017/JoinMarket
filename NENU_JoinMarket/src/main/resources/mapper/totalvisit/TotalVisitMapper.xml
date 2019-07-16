@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nenu.market.mapper.totalvisit.TotalVisitMapper">
+
+    <resultMap id="TotalVisit" type="com.nenu.market.entity.totalvisit.TotalVisit">
+        <id property="id" column="id"/>
+        <result property="city_name" column="city_name"/>
+        <result property="year" column="city_year"/>
+        <result property="visitCount" column="visitCount"/>
+        <result property="returnCount" column="returnCount"/>
+        <result property="signNumber_b" column="signNumber(b)"/>
+        <result property="signNumber_y" column="signNumber(y)"/>
+        <result property="education_yon" column="education_yon"/>
+    </resultMap>
+
+    <insert id="addTotalVisit">
+        INSERT INTO `t_totalvisit`
+        (city_name, city_year, visitCount, returnCount, education_yon)
+        VALUES (#{TotalVisit.city_name}, #{TotalVisit.year}, #{TotalVisit.visitCount}, #{TotalVisit.returnCount}, #{TotalVisit.education_yon})
+    </insert>
+
+    <select id="selectByCityName" resultMap="TotalVisit">
+        SELECT *
+        FROM t_totalvisit
+        WHERE t_totalvisit.city_name = #{city_name}
+    </select>
+
+    <update id="updateCityReturnCount">
+        UPDATE t_totalvisit
+        SET t_totalvisit.returnCount = #{TotalVisit.returnCount}
+        WHERE t_totalvisit.city_name = #{TotalVisit.city_name}
+    </update>
+
+    <update id="updateCityVisitCount">
+        UPDATE t_totalvisit
+        SET t_totalvisit.visitCount = #{TotalVisit.visitCount}
+        WHERE t_totalvisit.city_name = #{TotalVisit.city_name}
+    </update>
+
+</mapper>

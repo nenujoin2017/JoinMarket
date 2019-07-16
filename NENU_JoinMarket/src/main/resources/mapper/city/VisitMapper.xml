@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nenu.market.mapper.city.VisitMapper">
+    <resultMap id="VisitMapper" type="com.nenu.market.entity.city.Education">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="year" jdbcType="INTEGER" property="year" />
+        <result column="province" jdbcType="VARCHAR" property="province" />
+        <result column="city_name" jdbcType="VARCHAR" property="city_name" />
+        <result column="city_visit" jdbcType="VARCHAR" property="city_visit" />
+        <result column="education_yon" jdbcType="VARCHAR" property="education_yon" />
+    </resultMap>
+
+    <!--遍历-->
+    <select id="listAllVisit" resultType="com.nenu.market.entity.city.Education">
+        select t_city.id,education_yon,city_name,province,city_visit
+        from t_city,t_province
+        where t_city.city_name = t_province.city
+    </select>
+
+    <!--&lt;!&ndash;根据教育类或非教育类查询&ndash;&gt;-->
+    <!--<select id="selectByEducationYon" resultType="com.nenu.market.entity.city.Education">-->
+        <!--select t_city.id,education_yon,city_name,province,city_visit-->
+        <!--from t_city,t_province-->
+        <!--where `education_yon`=#{education_yon} and t_city.city_name = t_province.city-->
+    <!--</select>-->
+
+    <!--&lt;!&ndash;根据城市名查询&ndash;&gt;-->
+    <!--<select id="selectByCityName" resultType="com.nenu.market.entity.city.Education">-->
+        <!--select t_city.id,education_yon,city_name,province,city_visit-->
+        <!--from t_city,t_province-->
+        <!--where `city_name` LIKE CONCAT('%',#{city_name},'%')-->
+        <!--and t_city.city_name = t_province.city-->
+    <!--</select>-->
+
+    <!--根据关键字查询-->
+    <select id="queryVisitByKeyword" resultType="com.nenu.market.entity.city.Education">
+        select t_city.id,education_yon,city_name,province,city_visit
+        from t_city,t_province
+        where `city_name` LIKE CONCAT('%',#{keyword},'%')
+        and `education_yon` LIKE CONCAT('%',#{education_yon},'%')
+        and t_city.city_name = t_province.city
+    </select>
+
+</mapper>

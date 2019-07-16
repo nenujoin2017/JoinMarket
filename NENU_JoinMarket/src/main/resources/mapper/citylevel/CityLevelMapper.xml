@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nenu.market.mapper.citylevel.CityLevelMapper">
+
+    <resultMap id="CityLevel" type="com.nenu.market.entity.citylevel.CityLevel" >
+        <id property="id" column="id"/>
+        <result property="cityName" column="city_name"/>
+        <result property="cityRank" column="city_rank"/>
+        <result property="cityGrading" column="city_grading"/>
+        <result property="road" column="road"/>
+        <result property="province" column="province"/>
+    </resultMap>
+
+    <select id="listAllCityLevel" resultMap="CityLevel">
+        SELECT t_citylevel.*,t_province.province
+        FROM t_citylevel,t_province
+        WHERE t_citylevel.city_name = t_province.city
+    </select>
+
+    <insert id="addCityLevel">
+        INSERT INTO t_citylevel
+        (city_name,city_rank,city_grading,road)
+        VALUES
+        (#{CityLevel.cityName},#{CityLevel.cityRank},#{CityLevel.cityGrading},#{CityLevel.road})
+    </insert>
+
+    <delete id="deleteCityLevel">
+        DELETE FROM t_citylevel
+        WHERE id=#{id}
+    </delete>
+
+    <update id="updateCityLevel">
+        UPDATE t_citylevel
+        SET city_name=#{CityLevel.cityName},city_rank=#{CityLevel.cityRank},city_grading=#{CityLevel.cityGrading},road=#{CityLevel.road}
+        WHERE id=#{CityLevel.id}
+    </update>
+
+    <select id="searchCityLevelById" resultMap="CityLevel" >
+        SELECT t_citylevel.*,t_province.province
+        FROM t_citylevel,t_province
+        WHERE t_citylevel.id=#{id}
+        AND t_citylevel.city_name = t_province.city
+    </select>
+
+    <select id="searchCityLevel" resultMap="CityLevel" >
+        SELECT t_citylevel.*,t_province.province
+        FROM t_citylevel,t_province
+        WHERE t_citylevel.city_name = t_province.city
+        AND (t_citylevel.id LIKE '%${key}%'
+        OR t_citylevel.city_name LIKE '%${key}%'
+        OR t_citylevel.city_rank LIKE '%${key}%'
+        OR t_citylevel.city_grading LIKE '%${key}%'
+        OR t_citylevel.road LIKE '%${key}%'
+        OR t_province.province LIKE '%${key}%')
+    </select>
+</mapper>

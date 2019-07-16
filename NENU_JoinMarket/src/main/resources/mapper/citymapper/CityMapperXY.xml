@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nenu.market.mapper.citymapper.CityMapperXY">
+    <resultMap id="City" type="com.nenu.market.entity.CityXY">
+        <id property="id" column="id"/>
+        <result property="code" column="city_code"/>
+        <result property="name" column="city_name"/>
+
+        <!--这里是测试数据 未来可能需要修改-->
+        <result property="sign" column="city_sign"/>
+        <result property="expect" column="city_expect"/>
+        <result property="studentFrom" column="city_studentFrom"/>
+        <result property="visit" column="city_visit"/>
+        <result property="recency" column="city_recency"/>
+        <result property="grading" column="city_grading"/>
+        <result property="score" column="city_score"/>
+        <result property="unit" column="city_unit"/>
+        <result property="people" column="city_people"/>
+        <result property="cProvince" column="province"/>
+
+
+
+    </resultMap>
+
+    <!--<select id="getCitySignByYear" resultMap="CityXY">-->
+        <!--select t1.*,c3.china_cName province from-->
+        <!--(SELECT * FROM t_city left join china on t_city.city_name = china.china_cName) t1-->
+        <!--left  join-->
+        <!--(china c3) on t1.china_cPid = c3.china_Id-->
+    <!--</select>-->
+
+    <!--<select id="getCitySignByYear" resultMap="CityXY">-->
+        <!--select t2.*,t3.sign sign from ((select t1.*,c3.china_cName province from-->
+        <!--(SELECT * FROM t_city left join china on t_city.city_name = china.china_cName) t1-->
+        <!--left  join-->
+        <!--(china c3) on t1.china_cPid = c3.china_Id) t2,t_data_year_beta t3)-->
+        <!--where t2.china_id = t3.code and t3.year = #{year}-->
+    <!--</select>-->
+
+    <!--<select id="getCitySignByYear" resultMap="CityXY">-->
+        <!--select t2.*,t3.sign sign,t3.ex ex,t3.studentFrom studentFrom-->
+        <!--from (select t1.*,c3.china_cName province from-->
+        <!--(SELECT * FROM t_city left join china on t_city.city_name = china.china_cName) t1-->
+        <!--left  join-->
+        <!--(china c3) on t1.china_cPid = c3.china_Id) t2,t_data_year_beta t3-->
+        <!--where t2.china_id = t3.code and t3.year = #{year}-->
+    <!--</select>-->
+
+    <!--<select id="getCityExByYear" resultMap="CityXY">-->
+        <!--select t2.*,t3.sign sign,t3.ex ex,t3.studentFrom studentFrom-->
+        <!--from (select t1.*,c3.china_cName province from-->
+        <!--(SELECT * FROM t_city left join china on t_city.city_name = china.china_cName) t1-->
+        <!--left  join-->
+        <!--(china c3) on t1.china_cPid = c3.china_Id) t2,t_data_year_beta t3-->
+        <!--where t2.china_id = t3.code and t3.year = #{year}-->
+    <!--</select>-->
+
+    <select id="getCityExByYear" resultMap="City">
+        select * from t_city c,t_province p where city_year = #{year} and c.city_name = p.city
+    </select>
+
+    <select id="getCitySignByYear" resultMap="City">
+        select * from t_city where city_year = #{year}
+    </select>
+</mapper>

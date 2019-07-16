@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nenu.market.mapper.position_requirements.PositionRequirementsMapper">
+
+    <resultMap id="City" type="com.nenu.market.entity.position_requirements.PositionRequirements">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="company_name" jdbcType="VARCHAR" property="company_name" />
+        <result column="autumn_notnomal" jdbcType="INTEGER" property="autumn_notnomal" />
+        <result column="autumn_goodquality" jdbcType="INTEGER" property="autumn_goodquality" />
+        <result column="national" jdbcType="INTEGER" property="national" />
+        <result column="spring_notnomal" jdbcType="INTEGER" property="spring_notnomal" />
+        <result column="spring_goodquality" jdbcType="INTEGER" property="spring_goodquality" />
+        <result column="internet" jdbcType="INTEGER" property="internet" />
+        <result column="nofair" jdbcType="INTEGER" property="nofair" />
+    </resultMap>
+
+    <!--增加参会意向-->
+    <insert id="addParticipationIntention">
+        INSERT INTO t_participation_intention
+        VALUES (#{company_name},#{autumn_notnomal},#{autumn_goodquality},#{national},
+        #{spring_notnomal},#{spring_goodquality},#{internet},#{nofair})
+    </insert>
+
+    <!--编辑参会意向-->
+    <update id="updateParticipationIntention">
+        UPDATE t_participation_intention
+        SET `company_name` =#{company_name},
+        `autumn_notnomal` =#{autumn_notnomal},
+        `autumn_goodquality` =#{autumn_goodquality},
+        `national` =#{national},
+        `spring_notnomal` =#{spring_notnomal},
+        `spring_goodquality` =#{spring_goodquality},
+        `internet` =#{internet},
+        `nofair` =#{nofair}
+    </update>
+
+    <!--根据关键字查询参会意向-->
+    <select id="queryParticipationIntention" resultType="com.nenu.market.entity.participation_intention.ParticipationIntention">
+        SELECT * FROM t_participation_intention
+        WHERE  `company_name` LIKE concat('%',#{keyWord},'%')
+        OR `autumn_notnomal` LIKE concat('%',#{keyWord},'%')
+        OR `autumn_goodquality` LIKE concat('%',#{keyWord},'%')
+        OR `national` LIKE concat('%',#{keyWord},'%')
+        OR `spring_notnomal` LIKE concat('%',#{keyWord},'%')
+        OR `spring_goodquality` LIKE concat('%',#{keyWord},'%')
+        OR `internet` LIKE concat('%',#{keyWord},'%')
+        OR `nofair` LIKE concat('%',#{keyWord},'%')
+    </select>
+
+    <!--遍历所有参会意向-->
+    <select id="listAllParticipationIntention" resultType="com.nenu.market.entity.participation_intention.ParticipationIntention">
+        SELECT * FROM t_participation_intention
+    </select>
+
+</mapper>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nenu.market.mapper.citymapper.CityMapperXY">
+    <!--<cache type="com.nenu.market.redis.RedisCache"/>-->
+
+    <resultMap id="User" type="com.nenu.market.entity.User">
+        <id property="id" column="id"/>
+        <result property="userName" column="user_name"/>
+        <result property="passWord" column="user_password"/>
+    </resultMap>
+
+    <select id="getAllUsers" resultMap="User">
+        SELECT * FROM `t_testfornew`
+    </select>
+    <select id="findByName" resultMap="User">
+        SELECT * FROM users WHERE username = #{name} limit 1
+    </select>
+    <select id="findById" resultMap="User">
+        SELECT * FROM users WHERE id = #{id} limit 1
+    </select>
+    <insert id="addUser">
+        insert into users(username,password,perms) value ('test','test','user:add')
+    </insert>
+</mapper>
