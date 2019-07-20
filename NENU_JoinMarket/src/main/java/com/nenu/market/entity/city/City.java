@@ -25,7 +25,7 @@ public class City {
 
     private String city_grading;
 
-    private String city_score;
+    private double city_score;
 
     private int city_unit;
 
@@ -105,11 +105,11 @@ public class City {
         this.city_grading = city_grading;
     }
 
-    public String getCity_score() {
+    public double getCity_score() {
         return city_score;
     }
 
-    public void setCity_score(String city_score) {
+    public void setCity_score(double city_score) {
         this.city_score = city_score;
     }
 

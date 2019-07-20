@@ -8,6 +8,7 @@ package com.nenu.market.mapper.city;
 
 import com.nenu.market.entity.city.Education;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -33,10 +34,12 @@ public interface VisitMapper {
 
 
     /**
-     * 根据关键字查询
-     * @param keyword
+     * 根据是否为教育类/城市名称/权重分析 查询
+     * @param education_yon
+     * @param city_name
+     * @param city_visit
      * @return
      * @throws Exception
      */
-    public List<Education> queryVisitByKeyword(String keyword) throws Exception;
+    public List<Education> queryVisitByKeyword(@Param("education_yon") int education_yon, @Param("city_name") String city_name, @Param("city_visit") int city_visit) throws Exception;
 }

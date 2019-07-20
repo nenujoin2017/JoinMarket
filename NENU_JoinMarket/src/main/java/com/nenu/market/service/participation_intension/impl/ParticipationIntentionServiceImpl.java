@@ -17,7 +17,7 @@ import java.util.List;
  */
 
 @Service("ParticipationIntentionService")
-public class ParticipationIntentionServiceImpl implements ParticipationIntentionService{
+public class ParticipationIntentionServiceImpl implements ParticipationIntentionService {
 
     @Autowired
     ParticipationIntentionMapper participationIntentionMapper;
@@ -41,39 +41,39 @@ public class ParticipationIntentionServiceImpl implements ParticipationIntention
     }
 
 
-    @Override
-    @Transactional
-    /**
-     * 编辑参会意向
-     * @param participationIntention
-     * @return
-     */
-    public ParticipationIntention updateParticipationIntention(ParticipationIntention participationIntention){
-        try{
-            participationIntention = participationIntentionMapper.updateParticipationIntention(participationIntention);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return participationIntention;
-    }
+//    @Override
+//    @Transactional
+//    /**
+//     * 编辑参会意向
+//     * @param participationIntention
+//     * @return
+//     */
+//    public ParticipationIntention updateParticipationIntention(ParticipationIntention participationIntention){
+//        try{
+//            participationIntention = participationIntentionMapper.updateParticipationIntention(participationIntention);
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+//        return participationIntention;
+//    }
 
 
-    @Override
-    @Transactional
-    /**
-     * 根据关键字查询参会意向
-     * @param keyword
-     * @return
-     */
-    public List<ParticipationIntention> queryParticipationIntention(String keyword){
-        List<ParticipationIntention> resultList = Collections.emptyList();
-        try {
-            resultList = participationIntentionMapper.queryParticipationIntention(keyword);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return resultList;
-    }
+//    @Override
+//    @Transactional
+//    /**
+//     * 根据关键字查询参会意向
+//     * @param keyword
+//     * @return
+//     */
+//    public List<ParticipationIntention> queryParticipationIntention(String keyword){
+//        List<ParticipationIntention> resultList = Collections.emptyList();
+//        try {
+//            resultList = participationIntentionMapper.queryParticipationIntention(keyword);
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+//        return resultList;
+//    }
 
 
     @Override
@@ -86,6 +86,25 @@ public class ParticipationIntentionServiceImpl implements ParticipationIntention
         List<ParticipationIntention> list = Collections.emptyList();
         try {
             list = participationIntentionMapper.listAllParticipationIntention();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    /**
+     * 根据单位名称、走访人员、时间查询
+     * @param company_name
+     * @param visitor_name
+     * @param time
+     * @return
+     */
+    @Override
+    @Transactional
+    public List<ParticipationIntention> listByCVT(String company_name, String visitor_name, String time){
+        List<ParticipationIntention> list = Collections.emptyList();
+        try {
+            list = participationIntentionMapper.listByCVT(company_name, visitor_name, time);
         }catch (Exception e){
             e.printStackTrace();
         }

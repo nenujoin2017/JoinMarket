@@ -12,33 +12,25 @@
 
     <!--遍历-->
     <select id="listAllVisit" resultType="com.nenu.market.entity.city.Education">
-        select t_city.id,education_yon,city_name,province,city_visit
+        select education_yon,city_name,province,city_visit
         from t_city,t_province
         where t_city.city_name = t_province.city
     </select>
 
-    <!--&lt;!&ndash;根据教育类或非教育类查询&ndash;&gt;-->
-    <!--<select id="selectByEducationYon" resultType="com.nenu.market.entity.city.Education">-->
-        <!--select t_city.id,education_yon,city_name,province,city_visit-->
-        <!--from t_city,t_province-->
-        <!--where `education_yon`=#{education_yon} and t_city.city_name = t_province.city-->
-    <!--</select>-->
-
-    <!--&lt;!&ndash;根据城市名查询&ndash;&gt;-->
-    <!--<select id="selectByCityName" resultType="com.nenu.market.entity.city.Education">-->
-        <!--select t_city.id,education_yon,city_name,province,city_visit-->
-        <!--from t_city,t_province-->
-        <!--where `city_name` LIKE CONCAT('%',#{city_name},'%')-->
-        <!--and t_city.city_name = t_province.city-->
-    <!--</select>-->
-
-    <!--根据关键字查询-->
+    <!--根据是否为教育类/城市名称/权重分析 查询-->
     <select id="queryVisitByKeyword" resultType="com.nenu.market.entity.city.Education">
-        select t_city.id,education_yon,city_name,province,city_visit
+        select education_yon,city_name,province,city_visit
         from t_city,t_province
-        where `city_name` LIKE CONCAT('%',#{keyword},'%')
-        and `education_yon` LIKE CONCAT('%',#{education_yon},'%')
-        and t_city.city_name = t_province.city
+        where 1 = 1
+        <if test="education_yon != null">
+            and education_yon = #{education_yon,jdbcType=INTEGER}
+        </if>
+        <if test="city_name != null">
+            and city_name = #{city_name,jdbcType=INTEGER}
+        </if>
+        <if test="city_visit != null">
+            and city_visit = #{city_visit,jdbcType=INTEGER}
+        </if>
     </select>
 
 </mapper>

@@ -19,6 +19,28 @@ public class CityLevelServiceImpl implements CityLevelService {
         List<CityLevel> cityLevelList = Collections.emptyList();
         try{
             cityLevelList = cityLevelMapper.listAllCityLevel();
+            for(int i=0;i<cityLevelList.size();i++){
+                if(cityLevelList.get(i).getCityRank().equals("一线城市")){
+                    cityLevelList.get(i).setCityGrading("A");
+                    System.out.println("yes");
+                }
+                else if(cityLevelList.get(i).getCityRank().equals("新一线城市")){
+                    cityLevelList.get(i).setCityGrading("B");
+                }
+                else if(cityLevelList.get(i).getCityRank().equals("二线城市")){
+                    cityLevelList.get(i).setCityGrading("C");
+                }
+                else if(cityLevelList.get(i).getCityRank().equals("三线城市")){
+                    cityLevelList.get(i).setCityGrading("D");
+                }
+                else if(cityLevelList.get(i).getCityRank().equals("四线城市")){
+                    cityLevelList.get(i).setCityGrading("E");
+                    System.out.println(cityLevelList.get(i).getCityGrading());
+                }
+                else if(cityLevelList.get(i).getCityRank().equals("其他情况")){
+                    cityLevelList.get(i).setCityGrading("F");
+                }
+            }
         }catch (Exception e){
             System.out.println("列出所有城市分级出错");
             e.printStackTrace();
@@ -37,7 +59,7 @@ public class CityLevelServiceImpl implements CityLevelService {
 
     @Override
     public boolean deleteCityLevel(int id) throws Exception{
-            return cityLevelMapper.deleteCityLevel(id);
+        return cityLevelMapper.deleteCityLevel(id);
     }
 
     @Override
@@ -56,6 +78,30 @@ public class CityLevelServiceImpl implements CityLevelService {
 
     @Override
     public List<CityLevel> searchCityLevel(String key) throws Exception{
-        return cityLevelMapper.searchCityLevel(key);
+        List<CityLevel> cityLevelList=cityLevelMapper.searchCityLevel(key);
+        for(int i=0;i<cityLevelList.size();i++){
+            if(cityLevelList.get(i).getCityRank().equals("一线城市")){
+                cityLevelList.get(i).setCityGrading("A");
+                System.out.println("yes");
+            }
+            else if(cityLevelList.get(i).getCityRank().equals("新一线城市")){
+                cityLevelList.get(i).setCityGrading("B");
+            }
+            else if(cityLevelList.get(i).getCityRank().equals("二线城市")){
+                cityLevelList.get(i).setCityGrading("C");
+            }
+            else if(cityLevelList.get(i).getCityRank().equals("三线城市")){
+                cityLevelList.get(i).setCityGrading("D");
+            }
+            else if(cityLevelList.get(i).getCityRank().equals("四线城市")){
+                cityLevelList.get(i).setCityGrading("E");
+                System.out.println(cityLevelList.get(i).getCityGrading());
+            }
+            else if(cityLevelList.get(i).getCityRank().equals("其他情况")){
+                cityLevelList.get(i).setCityGrading("F");
+            }
+        }
+        return cityLevelList;
     }
 }
+

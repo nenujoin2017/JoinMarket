@@ -1,7 +1,6 @@
 package com.nenu.market.service.participation_intension;
 
 import com.nenu.market.entity.participation_intention.ParticipationIntention;
-import com.nenu.market.mapper.participation_intention.ParticipationIntentionMapper;
 
 import java.util.List;
 
@@ -20,20 +19,20 @@ public interface ParticipationIntentionService {
     public ParticipationIntention addParticipationIntention(ParticipationIntention participationIntention);
 
 
-    /**
-     * 编辑参会意向
-     * @param participationIntention
-     * @return
-     */
-    public ParticipationIntention updateParticipationIntention(ParticipationIntention participationIntention);
-
-
-    /**
-     * 根据关键字查询参会意向
-     * @param keyword
-     * @return
-     */
-    public List<ParticipationIntention> queryParticipationIntention(String keyword);
+//    /**
+//     * 编辑参会意向
+//     * @param participationIntention
+//     * @return
+//     */
+//    public ParticipationIntention updateParticipationIntention(ParticipationIntention participationIntention);
+//
+//
+//    /**
+//     * 根据关键字查询参会意向
+//     * @param keyword
+//     * @return
+//     */
+//    public List<ParticipationIntention> queryParticipationIntention(String keyword);
 
 
     /**
@@ -41,4 +40,13 @@ public interface ParticipationIntentionService {
      * @return
      */
     public List<ParticipationIntention> listAllParticipationIntention();
+
+    /**
+     * 根据单位名称、走访人员、时间查询
+     * @param company_name
+     * @param visitor_name
+     * @param time
+     * @return
+     */
+    public List<ParticipationIntention> listByCVT(String company_name, String visitor_name, String time);
 }

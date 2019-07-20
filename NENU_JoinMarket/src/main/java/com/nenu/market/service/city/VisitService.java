@@ -23,10 +23,12 @@ public interface VisitService {
 //    public List<Education> selectByCityName(String city_name) throws Exception;
 
     /**
-     * 根据关键字查询
-     * @param keyword
+     * 根据是否为教育类/城市名称/权重分析 查询
+     * @param education
+     * @param city_name
+     * @param city_visit
      * @return
      * @throws Exception
      */
-    public List<Education> queryVisitByKeyword(String keyword) throws Exception;
+    public List<Education> queryVisitByKeyword(int education, String city_name, int city_visit) throws Exception;
 }

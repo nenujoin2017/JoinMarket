@@ -24,6 +24,12 @@ public class PositionRequirements {
     //其他
     private String others;
 
+    //走访人员
+    private String visitor_name;
+
+    //时间
+    private String time;
+
     public int getId() {
         return id;
     }
@@ -72,6 +78,22 @@ public class PositionRequirements {
         this.others = others;
     }
 
+    public String getVisitor_name() {
+        return visitor_name;
+    }
+
+    public void setVisitor_name(String visitor_name) {
+        this.visitor_name = visitor_name;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
     @Override
     public String toString() {
         return "PositionRequirements{" +
@@ -81,6 +103,8 @@ public class PositionRequirements {
                 ", education='" + education + '\'' +
                 ", number=" + number +
                 ", others='" + others + '\'' +
+                ", visitor_name='" + visitor_name + '\'' +
+                ", time='" + time + '\'' +
                 '}';
     }
 }

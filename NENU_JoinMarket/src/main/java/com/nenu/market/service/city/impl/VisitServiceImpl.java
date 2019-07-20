@@ -7,72 +7,46 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service("VisitService")
-public class VisitServiceImpl implements VisitService{
+public class VisitServiceImpl implements VisitService {
 
-    @Autowired VisitMapper visitMapper;
+    @Autowired
+    VisitMapper visitMapper;
 
     /**
      * 遍历
      */
     @Override
     @Transactional
-    public List<Education> listAllVisit() throws Exception{
-        List<Education> visitList = null;
+    public List<Education> listAllVisit() throws Exception {
+        List<Education> visitList = Collections.emptyList();
         try {
             visitList = visitMapper.listAllVisit();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return visitList;
     }
 
-//    /**
-//     * 根据教育类或非教育类查询
-//     */
-//    @Override
-//    @Transactional
-//    public List<Education> selectByEducationYon(String education_yon) throws Exception{
-//        List<Education> visitList1 = null;
-//        try {
-//            visitList1 = visitMapper.selectByEducationYon(education_yon);
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-//        return visitList1;
-//    }
-//
-//    /**
-//     * 根据城市名查询
-//     */
-//    @Override
-//    @Transactional
-//    public List<Education> selectByCityName(String city_name) throws Exception{
-//        List<Education> visitList2 = null;
-//        try {
-//            visitList2 = visitMapper.selectByCityName(city_name);
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-//        return visitList2;
-//
-//    }
-
     /**
-     * 根据关键字查询
-     * @param keyword
+     * 根据是否为教育类/城市名称/权重分析 查询
+     *
+     * @param education_yon
+     * @param city_name
+     * @param city_visit
      * @return
      * @throws Exception
      */
     @Override
     @Transactional
-    public List<Education> queryVisitByKeyword(String keyword) throws Exception{
+    public List<Education> queryVisitByKeyword(int education_yon, String city_name, int city_visit) throws Exception {
         List<Education> visitList = null;
         try {
-            visitList = visitMapper.queryVisitByKeyword(keyword);
-        }catch (Exception e){
+            visitList = visitMapper.queryVisitByKeyword(education_yon, city_name, city_visit);
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return visitList;

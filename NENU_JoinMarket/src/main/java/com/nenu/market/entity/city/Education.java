@@ -1,5 +1,11 @@
 package com.nenu.market.entity.city;
 
+/**
+ * @Author: Liang Jiayue
+ * @Description:教育行业的实体类
+ * @Date: 16:16 2019/5/17
+ */
+
 public class Education {
 
     private int id;
@@ -10,15 +16,15 @@ public class Education {
 
     private String city_name;
 
-    private String city_exception;
+    private double city_exceptation;
 
-    private String city_sign;
+    private int city_sign;
 
-    private String city_studentFrom;
+    private int city_studentFrom;
 
-    private String city_visit;
+    private int city_visit;
 
-    private String city_recency;
+    private int city_recency;
 
     private String city_grading;
 
@@ -60,43 +66,43 @@ public class Education {
         this.city_name = city_name;
     }
 
-    public String getCity_exception() {
-        return city_exception;
+    public double getCity_exceptation() {
+        return city_exceptation;
     }
 
-    public void setCity_exception(String city_exception) {
-        this.city_exception = city_exception;
+    public void setCity_exceptation(double city_exceptation) {
+        this.city_exceptation = city_exceptation;
     }
 
-    public String getCity_sign() {
+    public int getCity_sign() {
         return city_sign;
     }
 
-    public void setCity_sign(String city_sign) {
+    public void setCity_sign(int city_sign) {
         this.city_sign = city_sign;
     }
 
-    public String getCity_studentFrom() {
+    public int getCity_studentFrom() {
         return city_studentFrom;
     }
 
-    public void setCity_studentFrom(String city_studentFrom) {
+    public void setCity_studentFrom(int city_studentFrom) {
         this.city_studentFrom = city_studentFrom;
     }
 
-    public String getCity_visit() {
+    public int getCity_visit() {
         return city_visit;
     }
 
-    public void setCity_visit(String city_visit) {
+    public void setCity_visit(int city_visit) {
         this.city_visit = city_visit;
     }
 
-    public String getCity_recency() {
+    public int getCity_recency() {
         return city_recency;
     }
 
-    public void setCity_recency(String city_recency) {
+    public void setCity_recency(int city_recency) {
         this.city_recency = city_recency;
     }
 
@@ -139,7 +145,7 @@ public class Education {
                 ", city_year=" + city_year +
                 ", province='" + province + '\'' +
                 ", city_name='" + city_name + '\'' +
-                ", city_exception='" + city_exception + '\'' +
+                ", city_exceptation='" + city_exceptation + '\'' +
                 ", city_sign='" + city_sign + '\'' +
                 ", city_studentFrom='" + city_studentFrom + '\'' +
                 ", city_visit='" + city_visit + '\'' +

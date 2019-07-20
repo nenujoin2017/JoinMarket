@@ -22,20 +22,20 @@ public interface PositionRequirementsService {
     public PositionRequirements addPositionRequirements(PositionRequirements positionRequirements);
 
 
-    /**
-     * 编辑一条岗位需求信息
-     * @param positionRequirements
-     * @return
-     */
-    public PositionRequirements updatePositionRequirements(PositionRequirements positionRequirements);
-
-
-    /**
-     * 根据关键字查询一条岗位需求信息
-     * @param keyword
-     * @return
-     */
-    public List<PositionRequirements> queryPositionRequirementsByKeyword(String keyword);
+//    /**
+//     * 编辑一条岗位需求信息
+//     * @param positionRequirements
+//     * @return
+//     */
+//    public PositionRequirements updatePositionRequirements(PositionRequirements positionRequirements);
+//
+//
+//    /**
+//     * 根据关键字查询一条岗位需求信息
+//     * @param keyword
+//     * @return
+//     */
+//    public List<PositionRequirements> queryPositionRequirementsByKeyword(String keyword);
 
 
     /**
@@ -43,4 +43,13 @@ public interface PositionRequirementsService {
      * @return
      */
     public List<PositionRequirements> listAllPositionRequirements();
+
+    /**
+     * 根据单位名称、走访人员、时间查询
+     * @param company_name
+     * @param visitor_name
+     * @param time
+     * @return
+     */
+    public List<PositionRequirements> listPositionRequirementsByCVT(String company_name, String visitor_name, String time);
 }

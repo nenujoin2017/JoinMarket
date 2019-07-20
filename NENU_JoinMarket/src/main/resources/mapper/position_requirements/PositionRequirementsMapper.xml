@@ -19,28 +19,36 @@
         VALUES (#{company_name},#{subject},#{education},#{number},#{others})
     </insert>
 
-    <!--编辑一条岗位需求信息-->
-    <update id="updatePositionRequirements" >
-        UPDATE t_position_requirements
-        SET `company_name` = #{company_name},
-        `subject` = #{subject},
-        `education` = #{education},
-        `number` = #{number},
-        `others` = #{others}
-    </update>
+    <!--&lt;!&ndash;编辑一条岗位需求信息&ndash;&gt;-->
+    <!--<update id="updatePositionRequirements" >-->
+        <!--UPDATE t_position_requirements-->
+        <!--SET `company_name` = #{company_name},-->
+        <!--`subject` = #{subject},-->
+        <!--`education` = #{education},-->
+        <!--`number` = #{number},-->
+        <!--`others` = #{others}-->
+    <!--</update>-->
 
-    <!--根据关键字查询一条岗位需求信息-->
-    <select id="queryPositionRequirementsByKeyword" resultType="com.nenu.market.entity.position_requirements.PositionRequirements">
-        SELECT * FROM t_position_requirements
-        WHERE  `company_name` LIKE concat('%',#{keyWord},'%')
-        OR `subject` LIKE concat('%',#{keyWord},'%')
-        OR `education` LIKE concat('%',#{keyWord},'%')
-        OR `number` LIKE concat('%',#{keyWord},'%')
-        OR `others` LIKE concat('%',#{keyWord},'%')
-    </select>
+    <!--&lt;!&ndash;根据关键字查询一条岗位需求信息&ndash;&gt;-->
+    <!--<select id="queryPositionRequirementsByKeyword" resultType="com.nenu.market.entity.position_requirements.PositionRequirements">-->
+        <!--SELECT * FROM t_position_requirements-->
+        <!--WHERE  `company_name` LIKE concat('%',#{keyWord},'%')-->
+        <!--OR `subject` LIKE concat('%',#{keyWord},'%')-->
+        <!--OR `education` LIKE concat('%',#{keyWord},'%')-->
+        <!--OR `number` LIKE concat('%',#{keyWord},'%')-->
+        <!--OR `others` LIKE concat('%',#{keyWord},'%')-->
+    <!--</select>-->
 
     <!--遍历所有岗位需求信息-->
     <select id="listAllPositionRequirements" resultType="com.nenu.market.entity.position_requirements.PositionRequirements">
         SELECT * FROM t_position_requirements
+    </select>
+
+    <!--根据单位名称、走访人员、时间查询-->
+    <select id="listPositionRequirementsByCVT" resultType="com.nenu.market.entity.participation_intention.ParticipationIntention">
+        SELECT * FROM t_position_requirements
+        where company_name=#{company_name}
+        and visitor_name=#{visitor_name}
+        and time=#{time}
     </select>
 </mapper>

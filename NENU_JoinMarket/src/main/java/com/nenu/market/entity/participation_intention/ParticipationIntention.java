@@ -34,6 +34,12 @@ public class ParticipationIntention {
     //暂不考虑参加招聘会
     private int nofair;
 
+    //走访人员
+    private String visitor_name;
+
+    //时间
+    private String time;
+
     public int getId() {
         return id;
     }
@@ -106,9 +112,25 @@ public class ParticipationIntention {
         this.nofair = nofair;
     }
 
+    public String getVisitor_name() {
+        return visitor_name;
+    }
+
+    public void setVisitor_name(String visitor_name) {
+        this.visitor_name = visitor_name;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
     @Override
     public String toString() {
-        return "ParticipationIntentionService{" +
+        return "ParticipationIntention{" +
                 "id=" + id +
                 ", company_name='" + company_name + '\'' +
                 ", autumn_notnomal=" + autumn_notnomal +
@@ -118,6 +140,8 @@ public class ParticipationIntention {
                 ", spring_goodquality=" + spring_goodquality +
                 ", internet=" + internet +
                 ", nofair=" + nofair +
+                ", visitor_name='" + visitor_name + '\'' +
+                ", time='" + time + '\'' +
                 '}';
     }
 }

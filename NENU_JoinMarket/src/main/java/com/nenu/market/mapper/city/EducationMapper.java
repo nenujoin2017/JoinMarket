@@ -2,6 +2,7 @@ package com.nenu.market.mapper.city;
 
 import com.nenu.market.entity.city.Education;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,5 +20,5 @@ public interface EducationMapper {
     /**
      * 根据关键字查询
      */
-    public List<Education> queryEducationByKeyword(String keyword) throws Exception;
+    public List<Education> queryEducationByKeyword(@Param("keyword") String keyword) throws Exception;
 }
