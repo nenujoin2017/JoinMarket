@@ -2,13 +2,12 @@ package com.nenu.market.mapper.participation_intention;
 
 import com.nenu.market.entity.participation_intention.ParticipationIntention;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
- * @Author: Liang Jiayue
+ * @Author: Liang Jiayue dage
  * @Description:参会意向的CRUD
  * @Date: 16:26 2019/5/17
  */
@@ -25,20 +24,20 @@ public interface ParticipationIntentionMapper {
     public ParticipationIntention addParticipationIntention(ParticipationIntention participationIntention);
 
 
-//    /**
-//     * 编辑参会意向
-//     * @param participationIntention
-//     * @return
-//     */
-//    public ParticipationIntention updateParticipationIntention(ParticipationIntention participationIntention);
-//
-//
-//    /**
-//     * 根据关键字查询参会意向
-//     * @param keyword
-//     * @return
-//     */
-//    public List<ParticipationIntention> queryParticipationIntention(String keyword);
+    /**
+     * 编辑参会意向
+     * @param participationIntention
+     * @return
+     */
+    public ParticipationIntention updateParticipationIntention(ParticipationIntention participationIntention);
+
+
+    /**
+     * 根据年份和关键字查询参会意向
+     * @param keyword
+     * @return
+     */
+    public List<ParticipationIntention> queryParticipationIntention(String keyword,int year);
 
 
     /**
@@ -54,5 +53,5 @@ public interface ParticipationIntentionMapper {
      * @param time
      * @return
      */
-    public List<ParticipationIntention> listByCVT(@Param("company_name") String company_name, @Param("visitor_name") String visitor_name, @Param("time") String time);
+    public List<ParticipationIntention> listByCVT(String company_name,String visitor_name,String time);
 }

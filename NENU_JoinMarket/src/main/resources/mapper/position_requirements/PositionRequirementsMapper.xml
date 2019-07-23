@@ -11,33 +11,37 @@
         <result column="education" jdbcType="VARCHAR" property="education" />
         <result column="number" jdbcType="INTEGER" property="number" />
         <result column="others" jdbcType="VARCHAR" property="others" />
+        <result column="visitor_name" jdbcType="VARCHAR" property="visitor_name" />
+        <result column="time" jdbcType="VARCHAR" property="time" />
     </resultMap>
 
     <!--增加一条岗位需求信息-->
     <insert id="addPositionRequirements">
         INSERT INTO t_position_requirements
-        VALUES (#{company_name},#{subject},#{education},#{number},#{others})
+        VALUES (#{company_name},#{subject},#{education},#{number},#{others},#{visitor_name},#{time})
     </insert>
 
-    <!--&lt;!&ndash;编辑一条岗位需求信息&ndash;&gt;-->
-    <!--<update id="updatePositionRequirements" >-->
-        <!--UPDATE t_position_requirements-->
-        <!--SET `company_name` = #{company_name},-->
-        <!--`subject` = #{subject},-->
-        <!--`education` = #{education},-->
-        <!--`number` = #{number},-->
-        <!--`others` = #{others}-->
-    <!--</update>-->
+    <!--编辑一条岗位需求信息-->
+    <update id="updatePositionRequirements" >
+        UPDATE t_position_requirements
+        SET `company_name` = #{company_name},
+        `subject` = #{subject},
+        `education` = #{education},
+        `number` = #{number},
+        `others` = #{others},
+        `visitor_name`=#{visitor_name},
+        `time`=#{time}
+    </update>
 
-    <!--&lt;!&ndash;根据关键字查询一条岗位需求信息&ndash;&gt;-->
-    <!--<select id="queryPositionRequirementsByKeyword" resultType="com.nenu.market.entity.position_requirements.PositionRequirements">-->
-        <!--SELECT * FROM t_position_requirements-->
-        <!--WHERE  `company_name` LIKE concat('%',#{keyWord},'%')-->
-        <!--OR `subject` LIKE concat('%',#{keyWord},'%')-->
-        <!--OR `education` LIKE concat('%',#{keyWord},'%')-->
-        <!--OR `number` LIKE concat('%',#{keyWord},'%')-->
-        <!--OR `others` LIKE concat('%',#{keyWord},'%')-->
-    <!--</select>-->
+    <!--根据关键字查询一条岗位需求信息-->
+    <select id="queryPositionRequirementsByKeyword" resultType="com.nenu.market.entity.position_requirements.PositionRequirements">
+        SELECT * FROM t_position_requirements
+        WHERE  `company_name` LIKE concat('%',#{keyWord},'%')
+        OR `subject` LIKE concat('%',#{keyWord},'%')
+        OR `education` LIKE concat('%',#{keyWord},'%')
+        OR `number` LIKE concat('%',#{keyWord},'%')
+        OR `others` LIKE concat('%',#{keyWord},'%')
+    </select>
 
     <!--遍历所有岗位需求信息-->
     <select id="listAllPositionRequirements" resultType="com.nenu.market.entity.position_requirements.PositionRequirements">

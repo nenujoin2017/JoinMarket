@@ -1,0 +1,52 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nenu.market.mapper.visitorPosition.VisitPositonMapper">
+    <resultMap id="VisitPosition" type="com.nenu.market.entity.visitorPosition.VisitPosition">
+        <id property="id" column="id"/>
+        <result property="company_name" column="company_name"/>
+        <result property="contact" column="contact"/>
+        <result property="position" column="position"/>
+        <result property="mobiephone" column="mobiephone"/>
+        <result property="fixedphone" column="fixedphone"/>
+        <result property="email" column="email"/>
+        <result property="webchatqq" column="webchatqq"/>
+        <result property="visitor_name" column="visitor_name"/>
+        <result property="time" column="time"/>
+    </resultMap>
+    <select id="listAllVisitPosition" resultMap="VisitPosition">
+        SELECT * FROM t_visitposition
+    </select>
+
+    <insert id="addVisitPosition">
+        INSERT INTO t_visitposition
+        (id,company_name,contact,position,mobiephone,fixedphone,email,webchatqq,visitor_name,time)
+        VALUES (#{VisitPosition.id},#{VisitPosition.company_name},#{VisitPosition.contact},#{VisitPosition.position},#{VisitPosition.mobiephone},#{VisitPosition.fixedphone},#{VisitPosition.email},#{VisitPosition.webchatqq},#{VisitPosition.visitor_name},#{VisitPosition.time})
+    </insert>
+
+    <update id="updateVisitPosition">
+    UPDATE t_visitposition
+    SET company_name=#{VisitPosition.company_name},contact=#{VisitPosition.contact},position=#{VisitPosition.position},mobiephone=#{VisitPosition.mobiephone},fixedphone=#{VisitPosition.fixedphone},email=#{VisitPosition.email},webchatqq=#{VisitPosition.webchatqq},visitor_name=#{VisitPosition.visitor_name},time=#{VisitPosition.time}
+    WHERE id=#{VisitPosition.id}
+    </update>
+
+    <select id="queryVisitPosition" resultType="VisitPosition">
+        SELECT * FROM t_visitposition
+        WHERE  (company_name LIKE '%${keyword}%'
+        OR contact LIKE '%${keyword}%'
+        OR position LIKE '%${keyword}%'
+        OR mobiephone LIKE '%${keyword}%'
+        OR fixedphone LIKE '%${keyword}%'
+        OR email LIKE '%${keyword}%'
+        OR webchatqq LIKE '%${keyword}%'
+        OR visitor_name LIKE '%${keyword}%'
+        OR time LIKE '%${keyword}%')
+        AND time LIKE '${year}%'
+    </select>
+
+    <select id="listVisitPosition" resultMap="VisitPosition">
+        SELECT * FROM t_visitposition
+        WHERE visitor_name = #{visitor_name} AND time=#{time} AND company_name=#{company_name}
+    </select>
+
+</mapper>

@@ -22,34 +22,36 @@
     <insert id="addParticipationIntention">
         INSERT INTO t_participation_intention
         VALUES (#{company_name},#{autumn_notnomal},#{autumn_goodquality},#{national},
-        #{spring_notnomal},#{spring_goodquality},#{internet},#{nofair})
+        #{spring_notnomal},#{spring_goodquality},#{internet},#{nofair},#{visitor_name},#{time})
     </insert>
 
-    <!--&lt;!&ndash;编辑参会意向&ndash;&gt;-->
-    <!--<update id="updateParticipationIntention">-->
-        <!--UPDATE t_participation_intention-->
-        <!--SET `company_name` =#{company_name},-->
-        <!--`autumn_notnomal` =#{autumn_notnomal},-->
-        <!--`autumn_goodquality` =#{autumn_goodquality},-->
-        <!--`national` =#{national},-->
-        <!--`spring_notnomal` =#{spring_notnomal},-->
-        <!--`spring_goodquality` =#{spring_goodquality},-->
-        <!--`internet` =#{internet},-->
-        <!--`nofair` =#{nofair}-->
-    <!--</update>-->
+    <!--编辑参会意向-->
+    <update id="updateParticipationIntention">
+        UPDATE t_participation_intention
+        SET `company_name` =#{company_name},
+        `autumn_notnomal` =#{autumn_notnomal},
+        `autumn_goodquality` =#{autumn_goodquality},
+        `national` =#{national},
+        `spring_notnomal` =#{spring_notnomal},
+        `spring_goodquality` =#{spring_goodquality},
+        `internet` =#{internet},
+        `nofair` =#{nofair},
+        `visitor_name`=#{visitor_name},
+        `time`=#{time}
+    </update>
 
-    <!--&lt;!&ndash;根据关键字查询参会意向&ndash;&gt;-->
-    <!--<select id="queryParticipationIntention" resultType="com.nenu.market.entity.participation_intention.ParticipationIntention">-->
-        <!--SELECT * FROM t_participation_intention-->
-        <!--WHERE  `company_name` LIKE concat('%',#{keyWord},'%')-->
-        <!--OR `autumn_notnomal` LIKE concat('%',#{keyWord},'%')-->
-        <!--OR `autumn_goodquality` LIKE concat('%',#{keyWord},'%')-->
-        <!--OR `national` LIKE concat('%',#{keyWord},'%')-->
-        <!--OR `spring_notnomal` LIKE concat('%',#{keyWord},'%')-->
-        <!--OR `spring_goodquality` LIKE concat('%',#{keyWord},'%')-->
-        <!--OR `internet` LIKE concat('%',#{keyWord},'%')-->
-        <!--OR `nofair` LIKE concat('%',#{keyWord},'%')-->
-    <!--</select>-->
+    <!--根据关键字查询参会意向-->
+    <select id="queryParticipationIntention" resultType="com.nenu.market.entity.participation_intention.ParticipationIntention">
+        SELECT * FROM t_participation_intention
+        WHERE  `company_name` LIKE concat('%',#{keyWord},'%')
+        OR `autumn_notnomal` LIKE concat('%',#{keyWord},'%')
+        OR `autumn_goodquality` LIKE concat('%',#{keyWord},'%')
+        OR `national` LIKE concat('%',#{keyWord},'%')
+        OR `spring_notnomal` LIKE concat('%',#{keyWord},'%')
+        OR `spring_goodquality` LIKE concat('%',#{keyWord},'%')
+        OR `internet` LIKE concat('%',#{keyWord},'%')
+        OR `nofair` LIKE concat('%',#{keyWord},'%')
+    </select>
 
     <!--遍历所有参会意向-->
     <select id="listAllParticipationIntention" resultType="com.nenu.market.entity.participation_intention.ParticipationIntention">
@@ -63,6 +65,5 @@
         and visitor_name=#{visitor_name}
         and `time`=#{time}
     </select>
-
 
 </mapper>

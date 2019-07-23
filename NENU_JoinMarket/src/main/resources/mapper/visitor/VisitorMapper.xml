@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nenu.market.mapper.visitor.VisitorMapper">
+
+    <resultMap id="Visitor" type="com.nenu.market.entity.visitor.Visitor" >
+        <id property="id" column="id"/>
+        <result property="visitor_name" column="visitor_name"/>
+        <result property="time" column="time"/>
+        <result property="company_name" column="company_name"/>
+        <result property="company_nature" column="company_nature"/>
+        <result property="company_place" column="company_place"/>
+        <result property="postcode" column="postcode"/>
+        <result property="feedback" column="feedback"/>
+        <result property="conclude" column="conclude"/>
+    </resultMap>
+
+    <select id="listAllVisitor" resultMap="Visitor">
+        SELECT *
+        FROM t_visitor
+    </select>
+
+    <insert id="addVisitor">
+        INSERT INTO t_visitor
+        (id,visitor_name,time,company_name,company_nature,company_place,postcode,feedback,conclude)
+        VALUES
+        (#{Visitor.id},#{Visitor.visitor_name},#{Visitor.time},#{Visitor.company_name},#{Visitor.company_nature},#{Visitor.company_place},
+        #{Visitor.postcode},#{Visitor.feedback},#{Visitor.conclude})
+    </insert>
+
+    <update id="updateVisitor">
+        UPDATE t_visitor
+        SET visitor_name=#{Visitor.visitor_name},time=#{Visitor.time},company_name=#{Visitor.company_name},company_nature=#{Visitor.company_nature},
+        company_place=#{Visitor.company_place},postcode=#{Visitor.postcode},feedback=#{Visitor.feedback},conclude=#{Visitor.conclude}
+        WHERE id=#{Visitor.id}
+    </update>
+
+    <select id="queryVisitorByCompanyNameAndVisitorName" resultMap="Visitor" >
+        SELECT *
+        FROM t_visitor
+        WHERE company_name=#{company_name} AND visitor_name=#{visitor_name} AND time = #{time}
+    </select>
+
+    <select id="queryVisitor" resultMap="Visitor" >
+        SELECT * FROM t_visitor
+        WHERE  (visitor_name LIKE '%${keyword}%'
+        OR time LIKE '%${keyword}%'
+        OR company_name LIKE '%${keyword}%'
+        OR company_nature LIKE '%${keyword}%'
+        OR company_place LIKE '%${keyword}%'
+        OR postcode LIKE '%${keyword}%'
+        OR feedback LIKE '%${keyword}%'
+        OR conclude LIKE '%${keyword}%')
+        AND time LIKE '${year}%'
+    </select>
+</mapper>

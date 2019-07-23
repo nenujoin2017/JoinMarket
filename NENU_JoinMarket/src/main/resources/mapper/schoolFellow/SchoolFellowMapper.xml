@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nenu.market.mapper.schoolFellow.SchoolFellowMapper">
+
+    <resultMap id="schoolFellow" type="com.nenu.market.entity.schoolFellow.SchoolFellow">
+        <id property="id" column="id"/>
+        <result property="company_name" column="company_name"/>
+        <result property="name" column="name"/>
+        <result property="major" column="major"/>
+        <result property="education" column="education"/>
+        <result property="time" column="time"/>
+        <result property="contact" column="contact"/>
+        <result property="visitor_name" column="visitor_name"/>
+        <result property="visitor_time" column="visitor_time"/>
+    </resultMap>
+
+    <insert id="addSchoolFellow">
+        INSERT INTO t_schoolfellow
+        (company_name, name, major, education, time, contact, visitor_name, visitor_time)
+        VALUES (#{schoolFellow.company_name}, #{schoolFellow.name}, #{schoolFellow.major}, #{schoolFellow.education}, #{schoolFellow.time}, #{schoolFellow.contact}, #{schoolFellow.visitor_name}, #{schoolFellow.visitor_time})
+    </insert>
+
+    <update id="updateSchoolFellow">
+        update t_schoolfellow
+        SET company_name = #{schoolFellow.company_name}, name = #{schoolFellow.name}, major = #{schoolFellow.major}, education = #{schoolFellow.education}, time = #{schoolFellow.time}, contact = #{schoolFellow.contact},visitor_name = #{schoolFellow.visitor_name},visitor_time = #{schoolFellow.visitor_time}
+        WHERE id = #{schoolFellow.id}
+    </update>
+    <select id="listSchoolFellow" resultMap="schoolFellow">
+        SELECT *
+        FROM `t_schoolfellow`
+        where company_name = #{company_name} AND visitor_name = #{visitor_name} AND visitor_time = #{visitor_time}
+    </select>
+
+</mapper>

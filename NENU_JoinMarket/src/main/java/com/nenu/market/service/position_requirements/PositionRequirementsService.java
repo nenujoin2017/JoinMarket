@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * @Author: Liang Jiayue
+ * @Author: Liang Jiayue dage
  * @Description:
  * @Date: 21:28 2019/5/16
  */
@@ -22,20 +22,20 @@ public interface PositionRequirementsService {
     public PositionRequirements addPositionRequirements(PositionRequirements positionRequirements);
 
 
-//    /**
-//     * 编辑一条岗位需求信息
-//     * @param positionRequirements
-//     * @return
-//     */
-//    public PositionRequirements updatePositionRequirements(PositionRequirements positionRequirements);
-//
-//
-//    /**
-//     * 根据关键字查询一条岗位需求信息
-//     * @param keyword
-//     * @return
-//     */
-//    public List<PositionRequirements> queryPositionRequirementsByKeyword(String keyword);
+    /**
+     * 编辑一条岗位需求信息
+     * @param positionRequirements
+     * @return
+     */
+    public PositionRequirements updatePositionRequirements(PositionRequirements positionRequirements);
+
+
+    /**
+     * 根据年份和关键字查询一条岗位需求信息
+     * @param keyword
+     * @return
+     */
+    public List<PositionRequirements> queryPositionRequirementsByKeyword(String keyword,int year);
 
 
     /**
@@ -51,5 +51,5 @@ public interface PositionRequirementsService {
      * @param time
      * @return
      */
-    public List<PositionRequirements> listPositionRequirementsByCVT(String company_name, String visitor_name, String time);
+    public List<PositionRequirements> listPositionRequirementsByCVT(String company_name,String visitor_name,String time);
 }
