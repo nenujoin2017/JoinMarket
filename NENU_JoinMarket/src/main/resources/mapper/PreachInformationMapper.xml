@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.preachinformation.PreachInformationMapper">
+    <resultMap id="PreachInformation" type="com.example.demo.entity.PreachInformation">
+        <id property="unitNumber" column="unitNumber"/>
+        <result property="unitName" column="unitName"/>
+        <result property="year" column="year"/>
+        <result property="presentationTime" column="presentationTime"/>
+        <result property="advocate" column="advocate"/>
+        <result property="recruitmentPosition" column="recruitmentPosition"/>
+        <result property="signing" column="signing"/>
+        <result property="place" column="place"/>
+    </resultMap>
+    <select id="listAll" resultMap="PreachInformation">
+        SELECT * FROM t_preachinformation
+    </select>
+    <insert id="addPreachInformation">
+        INSERT INTO t_preachinformation (unitNumber,unitName,year,presentationTime,advocate,recruitmentPosition,signing,place)
+        VALUES (#{PreachInformation.unitNumber},#{PreachInformation.unitName},#{PreachInformation.year},#{PreachInformation.presentationTime},#{PreachInformation.advocate},#{PreachInformation.recruitmentPosition},#{PreachInformation.signing},#{PreachInformation.place})
+    </insert>
+    <select id="searchByTime" resultMap="PreachInformation">
+        SELECT * FROM t_preachinformation
+        WHERE presentationTime=#{presentationTime}
+    </select>
+    <update id="updateAdvocate">
+        UPDATE t_preachinformation
+        SET advocate=#{advocate}
+        WHERE presentationTime=#{presentationTime}
+    </update>
+    <update id="updateRecruitmentPosition">
+        UPDATE t_preachinformation
+        SET recruitmentPosition=#{recruitmentPosition}
+        WHERE presentationTime=#{presentationTime}
+    </update>
+    <update id="updateSigning">
+        UPDATE t_preachinformation
+        SET signing=#{signing}
+        WHERE presentationTime=#{presentationTime}
+    </update>
+    <update id="updatePlace">
+        UPDATE t_preachinformation
+        SET place=#{place}
+        WHERE presentationTime=#{presentationTime}
+    </update>
+</mapper>
