@@ -63,17 +63,17 @@ public class UtilTest {
         System.out.println(cityService.addCity(city));
     }
 
-    @Test
-    public void testQueryCitySignByYear() throws Exception{
-        int year = 2019;
-        int fifthYearCitySign = cityService.queryCitySignByYear(year, "长春市").getCity_sign();
-        int fourthYearCitySign = cityService.queryCitySignByYear(year - 1, "长春市").getCity_sign();
-        int thirdYearCitySign = cityService.queryCitySignByYear(year - 2, "长春市").getCity_sign();
-        int secondYearCitySign = cityService.queryCitySignByYear(year - 3, "长春市").getCity_sign();
-        int firstYearCitySign = cityService.queryCitySignByYear(year - 4, "长春市").getCity_sign();
-        int fiveYearsCitySign = fifthYearCitySign + fourthYearCitySign + thirdYearCitySign + secondYearCitySign + firstYearCitySign;
-        System.out.println(fiveYearsCitySign);
-    }
+//    @Test
+//    public void testQueryCitySignByYear() throws Exception{
+//        int year = 2019;
+//        int fifthYearCitySign = cityService.queryCitySignByYear(year, "长春市").getCity_sign();
+//        int fourthYearCitySign = cityService.queryCitySignByYear(year - 1, "长春市").getCity_sign();
+//        int thirdYearCitySign = cityService.queryCitySignByYear(year - 2, "长春市").getCity_sign();
+//        int secondYearCitySign = cityService.queryCitySignByYear(year - 3, "长春市").getCity_sign();
+//        int firstYearCitySign = cityService.queryCitySignByYear(year - 4, "长春市").getCity_sign();
+//        int fiveYearsCitySign = fifthYearCitySign + fourthYearCitySign + thirdYearCitySign + secondYearCitySign + firstYearCitySign;
+//        System.out.println(fiveYearsCitySign);
+//    }
 
 //    @Test
 //    public void testProcessDataStudent() throws Exception{
