@@ -1,12 +1,13 @@
 package com.nenu.market.controller.processdata;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.nenu.market.entity.PreachInformation.PreachInformation;
 import com.nenu.market.entity.city.City;
 import com.nenu.market.entity.student.Student;
 import com.nenu.market.entity.totalvisit.TotalVisit;
 import com.nenu.market.service.city.CityService;
+import com.nenu.market.service.preachinformation.PreachInformationService;
 import com.nenu.market.service.student.StudentService;
 import com.nenu.market.service.totalvisit.TotalVisitService;
 import com.nenu.market.util.ProcessData;
@@ -20,7 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.io.File;
-import java.util.List;
+
 import java.util.Map;
 
 /**
@@ -42,26 +43,41 @@ public class ProcessDataController {
     @Autowired
     TotalVisitService totalVisitService;
 
+    @Autowired
+    PreachInformationService preachInformationService;
+
     @RequestMapping("file")
     public String file(){
         return "/test";
     }
 
+    /**
+     * 四个excel表的文件上传处理数据
+     * @param file excel表
+     * @param yearStr 年份
+     * @param isEducationStr 是否是教育类（1是教育类、2是非教育类）
+     * @param excelTypeStr 表的类型（1是student.xlsx, 2是visitCompany.xlsx，3是companyBack.xlsx，4是preach.xlsx）
+     * @param educationStr 学历（本科生或者研究生）
+     * @return
+     * @throws Exception
+     */
     @RequestMapping("fileUpload")
     @ResponseBody
-//    public String fileUpload(@RequestParam("fileName") MultipartFile file, String yearStr, String isEducationStr, String excelTypeStr) throws Exception{
-    public String fileUpload(@RequestParam("fileName") MultipartFile file) throws Exception{
-//        int year = Integer.parseInt(yearStr);
-//        int isEducation = Integer.parseInt(isEducationStr);
-//        int excelType = Integer.parseInt(excelTypeStr);
-        int year = 2019;
-        String yearStr = "2019";
+    public String fileUpload(@RequestParam("fileName") MultipartFile file, String yearStr, String isEducationStr, String excelTypeStr, String educationStr) throws Exception{
+//    public String fileUpload(@RequestParam("fileName") MultipartFile file) throws Exception{
+        int year = Integer.parseInt(yearStr);
+        int isEducation = Integer.parseInt(isEducationStr);
+        int excelType = Integer.parseInt(excelTypeStr);
 
-        int isEducation = 0;
-        int excelType = 1;
-        String educationStr = "本科生";
+//        int year = 2019;
+//        String yearStr = "2019";
+//
+//        int isEducation = 0;
+//        int excelType = 4;
+//        String educationStr = "本科生";
+//
+//        String isEducationStr;
 
-        String isEducationStr;
         if(isEducation == 0){
             isEducationStr = "非教育";
         }else{
@@ -158,7 +174,6 @@ public class ProcessDataController {
                     }
                 }
 
-
                 JSONArray array = JSONArray.parseArray(strExcel);
                 for(int i = 0;i < array.size();i++){
                     JSONObject jsonObject = array.getJSONObject(i);
@@ -214,7 +229,7 @@ public class ProcessDataController {
                         totalVisitService.addTotalVisit(totalVisit);
                     }
                 }
-            }else{
+            }else if(excelType == 3){
                 //保存文件
                 file.transferTo(dest);
                 ReadExcel readExcel = new ReadExcel();
@@ -240,6 +255,37 @@ public class ProcessDataController {
                     }else{
                         totalVisitService.addTotalVisit(totalVisit);
                     }
+                }
+            }else{
+                //保存文件
+                file.transferTo(dest);
+                ReadExcel readExcel = new ReadExcel();
+                File preachFile = new File("target/classes/preach.xlsx");
+                String preachExcel = readExcel.PoiTest(preachFile);
+
+
+                JSONArray array = JSONArray.parseArray(preachExcel);
+                for(int i = 0;i < array.size();i++){
+                    JSONObject jsonObject = array.getJSONObject(i);
+
+                    String unitNameStr = jsonObject.getString("单位名称");
+                    String presentationTimeStr = jsonObject.getString("来校宣讲时间");
+                    String advocateStr = jsonObject.getString("宣讲人员");
+                    String recruitmentPositionStr = jsonObject.getString("招聘职位");
+                    String signingStr = jsonObject.getString("签约人数");
+                    String placeStr = jsonObject.getString("宣讲会地点");
+
+                    PreachInformation preachInformation = new PreachInformation();
+
+                    preachInformation.setUnitName(unitNameStr);
+                    preachInformation.setYear(yearStr);
+                    preachInformation.setPresentationTime(presentationTimeStr);
+                    preachInformation.setAdvocate(advocateStr);
+                    preachInformation.setRecruitmentPosition(recruitmentPositionStr);
+                    preachInformation.setSigning(signingStr);
+                    preachInformation.setPlace(placeStr);
+
+                    preachInformationService.addUser(preachInformation);
                 }
             }
             return "successful";

@@ -44,25 +44,6 @@ public class ProcessData {
         return map;
     }
 
-    public List<String> process(String strExcel, String key){
-        //读取数据
-        JSONArray jsonArray = JSONArray.parseArray(strExcel);
-        //list用于存储excel表格中的属性值
-        List<String> list = new ArrayList();
-
-        //遍历JsonArray
-        for(int i = 0;i < jsonArray.size();i++){
-            //访问JSONArray中的JSONObject对象
-            JSONObject jsonObject = jsonArray.getJSONObject(i);
-            //访问目的属性值
-            String keyStr = jsonObject.getString(key);
-            //将属性值添加到链表
-            list.add(keyStr);
-        }
-        System.out.println(list);
-        return list;
-    }
-
     //降序排序
     public static <K, V extends Comparable<? super V>> Map<K, V> sortByValueDescending(Map<K, V> map) {
         List<Map.Entry<K, V>> list = new LinkedList<Map.Entry<K, V>>(map.entrySet());
