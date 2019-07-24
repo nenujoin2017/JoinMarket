@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nenu.market.mapper.student.StudentMapper">
+
+    <resultMap id="student" type="com.nenu.market.entity.student.Student">
+
+        <id property="id" column="id"/>
+        <result property="studentName" column="studentName"/>
+        <result property="sex" column="sex"/>
+        <result property="nation" column="nation"/>
+        <result property="education" column="education"/>
+        <result property="signType" column="signType"/>
+        <result property="college" column="college"/>
+        <result property="major" column="major"/>
+        <result property="studentFrom" column="studentFrom"/>
+        <result property="position" column="position"/>
+        <result property="student_year" column="student_year"/>
+        <result property="signCompany" column="signCompany"/>
+        <result property="companyId" column="companyId"/>
+
+    </resultMap>
+
+    <select id="listStudentByCompany" resultMap="student">
+          SELECT *
+          FROM `t_student`
+          WHERE companyId = #{companyId}
+    </select>
+
+    <insert id="addStudent">
+        INSERT INTO `t_student`
+        (studentName, sex, nation, education, signType, college, major, studentFrom, position, student_year, signCompany, companyId)
+        VALUES (#{student.studentName}, #{student.sex}, #{student.nation}, #{student.education}, #{student.signType}, #{student.college}, #{student.major}, #{student.studentFrom}, #{student.position}, #{student.student_year}, #{student.signCompany}, #{student.companyId})
+    </insert>
+
+    <update id="updateStudentSex">
+        UPDATE t_student
+        SET t_student.sex = #{student.sex}
+        WHERE t_student.studentName = #{student.studentName}
+    </update>
+
+    <select id="queryByStudentName" resultMap="student">
+        SELECT *
+        FROM t_student
+        WHERE t_student.studentName = #{studentName}
+    </select>
+
+    <select id="queryStudentByYear" resultMap="student">
+        SELECT *
+        FROM t_student
+        WHERE t_student.student_year = #{student_year}
+    </select>
+
+</mapper>

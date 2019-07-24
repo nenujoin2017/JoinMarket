@@ -63,7 +63,7 @@ public class ProcessDataController {
      */
     @RequestMapping("fileUpload")
     @ResponseBody
-    public String fileUpload(@RequestParam("fileName") MultipartFile file, String yearStr, String isEducationStr, String excelTypeStr, String educationStr) throws Exception{
+    public void fileUpload(@RequestParam("fileName") MultipartFile file, String yearStr, String isEducationStr, String excelTypeStr, String educationStr) throws Exception{
 //    public String fileUpload(@RequestParam("fileName") MultipartFile file) throws Exception{
         int year = Integer.parseInt(yearStr);
         int isEducation = Integer.parseInt(isEducationStr);
@@ -81,12 +81,12 @@ public class ProcessDataController {
         if(isEducation == 0){
             isEducationStr = "非教育";
         }else{
-            isEducationStr = "教育";
-        }
+            isEducationStr = "教育";        }
 
         if(file.isEmpty()){
-            return "false";
+            System.out.println("文件为空");
         }
+
         String fileName = file.getOriginalFilename();
         int size = (int) file.getSize();
         System.out.println(fileName + "-->" + size);
@@ -288,11 +288,11 @@ public class ProcessDataController {
                     preachInformationService.addUser(preachInformation);
                 }
             }
-            return "successful";
+//            return "successful";
         } catch (IllegalStateException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-            return "false";
+//            return "false";
         }
     }
 }
