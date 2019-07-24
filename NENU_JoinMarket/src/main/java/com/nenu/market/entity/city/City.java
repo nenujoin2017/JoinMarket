@@ -13,17 +13,17 @@ public class City {
 
     private int year;
 
-    private String city_exceptation;
+    private double city_exceptation;
 
-    private String city_sign;
+    private int city_sign;
 
-    private String city_studentFrom;
+    private int city_studentFrom;
 
-    private String city_visit;
+    private int city_visit;
 
-    private String city_recency;
+    private int city_recency;
 
-    private String city_grading;
+    private double city_grading;
 
     private double city_score;
 
@@ -57,51 +57,51 @@ public class City {
         this.year = year;
     }
 
-    public String getCity_exceptation() {
+    public double getCity_exceptation() {
         return city_exceptation;
     }
 
-    public void setCity_exceptation(String city_exceptation) {
+    public void setCity_exceptation(double city_exceptation) {
         this.city_exceptation = city_exceptation;
     }
 
-    public String getCity_sign() {
+    public int getCity_sign() {
         return city_sign;
     }
 
-    public void setCity_sign(String city_sign) {
+    public void setCity_sign(int city_sign) {
         this.city_sign = city_sign;
     }
 
-    public String getCity_studentFrom() {
+    public int getCity_studentFrom() {
         return city_studentFrom;
     }
 
-    public void setCity_studentFrom(String city_studentFrom) {
+    public void setCity_studentFrom(int city_studentFrom) {
         this.city_studentFrom = city_studentFrom;
     }
 
-    public String getCity_visit() {
+    public int getCity_visit() {
         return city_visit;
     }
 
-    public void setCity_visit(String city_visit) {
+    public void setCity_visit(int city_visit) {
         this.city_visit = city_visit;
     }
 
-    public String getCity_recency() {
+    public int getCity_recency() {
         return city_recency;
     }
 
-    public void setCity_recency(String city_recency) {
+    public void setCity_recency(int city_recency) {
         this.city_recency = city_recency;
     }
 
-    public String getCity_grading() {
+    public double getCity_grading() {
         return city_grading;
     }
 
-    public void setCity_grading(String city_grading) {
+    public void setCity_grading(double city_grading) {
         this.city_grading = city_grading;
     }
 
@@ -137,20 +137,19 @@ public class City {
         this.education_yon = education_yon;
     }
 
-
     @Override
     public String toString() {
         return "City{" +
                 "id=" + id +
                 ", city_name='" + city_name + '\'' +
                 ", year=" + year +
-                ", city_exceptation='" + city_exceptation + '\'' +
-                ", city_sign='" + city_sign + '\'' +
-                ", city_studentFrom='" + city_studentFrom + '\'' +
-                ", city_visit='" + city_visit + '\'' +
-                ", city_recency='" + city_recency + '\'' +
-                ", city_grading='" + city_grading + '\'' +
-                ", city_score='" + city_score + '\'' +
+                ", city_exceptation=" + city_exceptation +
+                ", city_sign=" + city_sign +
+                ", city_studentFrom=" + city_studentFrom +
+                ", city_visit=" + city_visit +
+                ", city_recency=" + city_recency +
+                ", city_grading=" + city_grading +
+                ", city_score=" + city_score +
                 ", city_unit=" + city_unit +
                 ", city_people=" + city_people +
                 ", education_yon=" + education_yon +

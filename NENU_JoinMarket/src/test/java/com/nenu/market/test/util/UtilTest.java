@@ -1,19 +1,13 @@
 package com.nenu.market.test.util;
 
 import com.nenu.market.entity.city.City;
-import com.nenu.market.entity.totalvisit.TotalVisit;
 import com.nenu.market.service.city.CityService;
 import com.nenu.market.service.totalvisit.TotalVisitService;
-import com.nenu.market.util.ProcessData;
-import com.nenu.market.util.ReadExcel;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.io.File;
-import java.util.Map;
 
 /**
  * @Author:Liangll
@@ -38,7 +32,7 @@ public class UtilTest {
     @Test
     public void testUpdateCitySign() throws Exception{
         City city = new City();
-        city.setCity_sign("88");
+        city.setCity_sign(88);
         city.setCity_name("洛阳");
         System.out.println(cityService.updateCitySign(city));
     }
@@ -46,7 +40,7 @@ public class UtilTest {
     @Test
     public void testUpdateCityExpect() throws Exception{
         City city = new City();
-        city.setCity_exceptation("66");
+        city.setCity_exceptation(66);
         city.setCity_name("洛阳");
         System.out.println(cityService.updateCityExpect(city));
     }
@@ -62,9 +56,9 @@ public class UtilTest {
         City city = new City();
         city.setCity_name(cityName);
         city.setYear(2019);
-        city.setCity_exceptation("111");
-        city.setCity_sign("222");
-        city.setCity_studentFrom("333");
+        city.setCity_exceptation(111);
+        city.setCity_sign(222);
+        city.setCity_studentFrom(333);
         city.setEducation_yon(1);
         System.out.println(cityService.addCity(city));
     }
@@ -72,11 +66,11 @@ public class UtilTest {
     @Test
     public void testQueryCitySignByYear() throws Exception{
         int year = 2019;
-        int fifthYearCitySign = Integer.parseInt(cityService.queryCitySignByYear(year, "长春市").getCity_sign());
-        int fourthYearCitySign = Integer.parseInt(cityService.queryCitySignByYear(year - 1, "长春市").getCity_sign());
-        int thirdYearCitySign = Integer.parseInt(cityService.queryCitySignByYear(year - 2, "长春市").getCity_sign());
-        int secondYearCitySign = Integer.parseInt(cityService.queryCitySignByYear(year - 3, "长春市").getCity_sign());
-        int firstYearCitySign = Integer.parseInt(cityService.queryCitySignByYear(year - 4, "长春市").getCity_sign());
+        int fifthYearCitySign = cityService.queryCitySignByYear(year, "长春市").getCity_sign();
+        int fourthYearCitySign = cityService.queryCitySignByYear(year - 1, "长春市").getCity_sign();
+        int thirdYearCitySign = cityService.queryCitySignByYear(year - 2, "长春市").getCity_sign();
+        int secondYearCitySign = cityService.queryCitySignByYear(year - 3, "长春市").getCity_sign();
+        int firstYearCitySign = cityService.queryCitySignByYear(year - 4, "长春市").getCity_sign();
         int fiveYearsCitySign = fifthYearCitySign + fourthYearCitySign + thirdYearCitySign + secondYearCitySign + firstYearCitySign;
         System.out.println(fiveYearsCitySign);
     }

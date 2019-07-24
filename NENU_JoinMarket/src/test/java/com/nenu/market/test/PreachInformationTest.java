@@ -36,7 +36,7 @@ public class PreachInformationTest {
         PreachInformation preachInformation=new PreachInformation();
         preachInformation.setUnitName("西南大学");
         preachInformation.setYear("2012");
-        preachInformation.setPresentationTime("2019.10.1");
+        preachInformation.setPresentationTime("2019.10.3");
         preachInformation.setAdvocate("赵琦君");
         preachInformation.setRecruitmentPosition("秘书员");
         preachInformation.setSigning("2");
