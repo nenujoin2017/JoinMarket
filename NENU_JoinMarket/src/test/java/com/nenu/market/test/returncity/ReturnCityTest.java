@@ -25,14 +25,14 @@ public class ReturnCityTest {
         ReturnCity returnCity = new ReturnCity();
         returnCity.setEducation_yon(1);
         returnCity.setCity_year(2019);
-        returnCity.setCity_name("广州市");
+        returnCity.setCity_name("%广%");
         System.out.println(returnCityService.SelectCity1(returnCity));
     }
 
     @Test
     public void testSelect2() throws Exception{
         ReturnCity returnCity = new ReturnCity();
-        returnCity.setEducation_yon(1);
+        returnCity.setEducation_yon(0);
         returnCity.setCity_year(2019);
         System.out.println(returnCityService.SelectCity2(returnCity));
     }

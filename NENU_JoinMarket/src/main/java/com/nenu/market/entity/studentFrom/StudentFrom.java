@@ -20,6 +20,10 @@ public class StudentFrom {
 
     private Integer min;
 
+    private String student_rate;
+
+    private String student_rank;
+
     public Integer getCity_year() {
         return city_year;
     }
@@ -76,6 +80,23 @@ public class StudentFrom {
         this.city_name = city_name;
     }
 
+
+    public String getStudent_rate() {
+        return student_rate;
+    }
+
+    public void setStudent_rate(String student_rate) {
+        this.student_rate = student_rate;
+    }
+
+    public String getStudent_rank() {
+        return student_rank;
+    }
+
+    public void setStudent_rank(String student_rank) {
+        this.student_rank = student_rank;
+    }
+
     @Override
     public String toString() {
         return "StudentFrom{" +
@@ -86,6 +107,8 @@ public class StudentFrom {
                 ", education_yon=" + education_yon +
                 ", max=" + max +
                 ", min=" + min +
+                ", student_rate='" + student_rate + '\'' +
+                ", student_rank='" + student_rank + '\'' +
                 '}';
     }
 }

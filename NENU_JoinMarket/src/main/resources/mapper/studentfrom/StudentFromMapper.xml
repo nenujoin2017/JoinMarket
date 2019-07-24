@@ -21,7 +21,7 @@
     <select id="Select1" resultMap="studentFrom">
         SELECT `city_name`, `city_year`,`education_yon`, `city_studentFrom`,`province`
         FROM `t_city`, `t_province`
-        where t_city.city_name = t_province.city AND education_yon = #{studentFrom.education_yon} AND city_year = #{studentFrom.city_year} AND city_name =#{studentFrom.city_name}
+        where t_city.city_name = t_province.city AND education_yon = #{studentFrom.education_yon} AND city_year = #{studentFrom.city_year} AND(city_name LIKE #{studentFrom.city_name} OR province LIKE #{studentFrom.city_name})
     </select>
 
     <select id="Select2" resultMap="studentFrom">

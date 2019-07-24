@@ -27,9 +27,9 @@ public class StudentFromTest {
     @Test
     public void testSelect1() throws Exception{
         StudentFrom studentFrom = new StudentFrom();
-        studentFrom.setEducation_yon(1);
+        studentFrom.setEducation_yon(0);
         studentFrom.setCity_year(2019);
-        studentFrom.setCity_name("长春市");
+        studentFrom.setCity_name("%河南%");
         System.out.println(studentFromService.Select1(studentFrom));
     }
 
@@ -57,7 +57,7 @@ public class StudentFromTest {
     @Test
     public void testSelect4() throws Exception{
         StudentFrom studentFrom = new StudentFrom();
-        studentFrom.setEducation_yon(1);
+        studentFrom.setEducation_yon(0);
         studentFrom.setCity_year(2019);
         System.out.println(studentFromService.Select4(studentFrom));
     }
