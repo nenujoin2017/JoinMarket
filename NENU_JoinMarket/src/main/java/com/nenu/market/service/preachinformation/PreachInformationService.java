@@ -1,6 +1,6 @@
 package com.nenu.market.service.preachinformation;
 
-import com.nenu.market.entity.PreachInformation;
+import com.nenu.market.entity.PreachInformation.PreachInformation;
 
 import java.util.List;
 

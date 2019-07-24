@@ -1,7 +1,7 @@
 package com.nenu.market.test;
 
 
-import com.nenu.market.entity.PreachInformation;
+import com.nenu.market.entity.PreachInformation.PreachInformation;
 import com.nenu.market.service.preachinformation.PreachInformationService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,7 +33,7 @@ public class PreachInformationTest {
     }
     @Test
     public void testAdd() throws Exception{
-        PreachInformation preachInformation=new PreachInformation();
+        PreachInformation preachInformation = new PreachInformation();
         preachInformation.setUnitName("西南大学");
         preachInformation.setYear("2012");
         preachInformation.setPresentationTime("2019.10.3");

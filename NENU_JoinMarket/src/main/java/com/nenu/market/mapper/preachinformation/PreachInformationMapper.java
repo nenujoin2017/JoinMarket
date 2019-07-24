@@ -1,6 +1,6 @@
 package com.nenu.market.mapper.preachinformation;
 
-import com.nenu.market.entity.PreachInformation;
+import com.nenu.market.entity.PreachInformation.PreachInformation;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;

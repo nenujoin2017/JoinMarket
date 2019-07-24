@@ -1,6 +1,6 @@
 package com.nenu.market.service.preachinformation.PreachInformationServiceImpl;
 
-import com.nenu.market.entity.PreachInformation;
+import com.nenu.market.entity.PreachInformation.PreachInformation;
 import com.nenu.market.mapper.preachinformation.PreachInformationMapper;
 import com.nenu.market.service.preachinformation.PreachInformationService;
 import org.springframework.beans.factory.annotation.Autowired;
