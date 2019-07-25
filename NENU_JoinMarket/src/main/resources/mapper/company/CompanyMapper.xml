@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nenu.market.mapper.company.CompanyMapper">
+
+    <resultMap id="returnCity" type="com.nenu.market.entity.company.Company">
+        <id property="id" column="id"/>
+        <result property="company_name" column="company_name"/>
+        <result property="company_nature" column="company_nature"/>
+        <result property="company_city" column="company_city"/>
+        <result property="province" column="province"/>
+<!--        走访-->
+        <result property="company" column="company"/>
+<!--        签约-->
+        <result property="signCompany" column="signCompany"/>
+<!--        来校宣讲-->
+        <result property="unitName" column="unitName"/>
+    </resultMap>
+
+
+    <select id="listAllCompany" resultType="company">
+        SELECT t_company.id, `company_name`,`company_nature`,`company_city`,`province`
+        FROM `t_company`, `t_province`
+        where t_company.company_city = t_province.city
+    </select>
+
+    <insert id="addCompany">
+        INSERT INTO `t_company`
+        (company_name,company_nature,company_city)
+        VALUES (#{company.company_name}, #{company.company_nature}, #{company.company_city})
+    </insert>
+
+    <select id="selectCompany" resultType="company">
+        SELECT t_company.id,`company_name`,`company_nature`,`company_city`,`province`
+        FROM `t_company`, `t_province`
+        where t_company.company_city = t_province.city AND
+        (company_name LIKE #{keyword}
+        OR company_nature LIKE #{keyword}
+        OR company_city LIKE #{keyword})
+    </select>
+
+<!--    列出走访-->
+    <select id="listVisit" resultType="company">
+        SELECT `company`
+        FROM `t_visit`
+    </select>
+
+<!--    列出签约-->
+    <select id="listSign" resultType="company">
+        SELECT `signCompany`
+        FROM `t_student`
+    </select>
+
+<!--    列出来校宣讲-->
+    <select id="listReturn" resultType="company">
+        SELECT unitName
+        FROM t_preachinformation
+    </select>
+
+    <select id="getCompanyById" resultType="company">
+        SELECT *
+        FROM t_company
+        WHERE id = #{id}
+    </select>
+
+</mapper>
