@@ -39,5 +39,5 @@ public interface CompanyService {
 
     public List<Company> listSign() throws Exception;
 
-    public Company getCompanyById(int id) throws Exception;
+    public Company getIdByName(String company_name) throws Exception;
 }

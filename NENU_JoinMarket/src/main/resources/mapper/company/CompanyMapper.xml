@@ -58,10 +58,10 @@
         FROM t_preachinformation
     </select>
 
-    <select id="getCompanyById" resultType="company">
+    <select id="getIdByName" resultType="company">
         SELECT *
         FROM t_company
-        WHERE id = #{id}
+        WHERE company_name = #{company_name}
     </select>
 
 </mapper>

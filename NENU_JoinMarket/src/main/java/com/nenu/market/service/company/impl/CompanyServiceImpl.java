@@ -71,9 +71,8 @@ public class CompanyServiceImpl implements CompanyService {
         return list;
     }
 
-    public Company getCompanyById(int id) throws Exception{
-        Company company = new Company();
-        company = companyMapper.getCompanyById(id);
+    public Company getIdByName(String company_name) throws Exception{
+        Company company = companyMapper.getIdByName(company_name);
         return company;
     }
 }

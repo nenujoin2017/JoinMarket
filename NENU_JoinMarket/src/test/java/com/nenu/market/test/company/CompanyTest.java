@@ -57,8 +57,8 @@ public class CompanyTest {
     }
 
     @Test
-    public void testGetCompanyById() throws Exception{
-        int id = 3;
-        System.out.println(companyService.getCompanyById(id));
+    public void testGetIdByName() throws Exception{
+        String company_name="东师";
+        System.out.println(companyService.getIdByName(company_name));
     }
  }

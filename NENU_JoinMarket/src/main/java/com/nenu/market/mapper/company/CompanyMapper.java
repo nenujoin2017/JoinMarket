@@ -44,7 +44,7 @@ public interface CompanyMapper {
 
     public List<Company> listSign() throws Exception;
 
-    public Company getCompanyById(@Param("id") int id) throws Exception;
+    public Company getIdByName(@Param("company_name") String company_name) throws Exception;
 
 
 }
