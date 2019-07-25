@@ -26,7 +26,17 @@ public class CompanyServiceImpl implements CompanyService {
      * @throws Exception
      */
     public boolean addCompany(Company company) throws Exception{
-        return companyMapper.addCompany(company);
+        Company company1 = companyMapper.getIdByName(company.getCompany_name());
+        if(company1 == null){
+            System.out.println("数据库没有该公司，已添加成功");
+            return companyMapper.addCompany(company);
+
+        }else{
+            System.out.println("数据库有该公司，不需要添加");
+            return true;
+
+        }
+
     }
 
     /**

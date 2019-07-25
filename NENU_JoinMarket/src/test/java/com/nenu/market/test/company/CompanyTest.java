@@ -24,7 +24,7 @@ public class CompanyTest {
     @Test
     public void testAddCompany() throws Exception{
         Company company = new Company();
-        company.setCompany_name("东北师范大学");
+        company.setCompany_name("吉林大学");
         company.setCompany_nature("高等教育单位");
         company.setCompany_city("长春市");
         System.out.println(companyService.addCompany(company));
