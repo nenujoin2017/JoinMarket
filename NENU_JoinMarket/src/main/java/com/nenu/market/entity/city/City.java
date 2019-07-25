@@ -23,7 +23,7 @@ public class City {
 
     private int city_recency;
 
-    private double city_grading;
+    private String city_grading;
 
     private double city_score;
 
@@ -97,11 +97,11 @@ public class City {
         this.city_recency = city_recency;
     }
 
-    public double getCity_grading() {
+    public String getCity_grading() {
         return city_grading;
     }
 
-    public void setCity_grading(double city_grading) {
+    public void setCity_grading(String city_grading) {
         this.city_grading = city_grading;
     }
 
@@ -148,7 +148,7 @@ public class City {
                 ", city_studentFrom=" + city_studentFrom +
                 ", city_visit=" + city_visit +
                 ", city_recency=" + city_recency +
-                ", city_grading=" + city_grading +
+                ", city_grading='" + city_grading + '\'' +
                 ", city_score=" + city_score +
                 ", city_unit=" + city_unit +
                 ", city_people=" + city_people +
