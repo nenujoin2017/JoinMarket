@@ -51,32 +51,32 @@ public class ProcessDataController {
         return "/test";
     }
 
-    /**
-     * 四个excel表的文件上传处理数据
-     * @param file excel表
-     * @param yearStr 年份
-     * @param isEducationStr 是否是教育类（1是教育类、2是非教育类）
-     * @param excelTypeStr 表的类型（1是student.xlsx, 2是visitCompany.xlsx，3是companyBack.xlsx，4是preach.xlsx）
-     * @param educationStr 学历（本科生或者研究生）
-     * @return
-     * @throws Exception
-     */
+//    /**
+//     * 四个excel表的文件上传处理数据
+//     * @param file excel表
+//     * @param yearStr 年份
+//     * @param isEducationStr 是否是教育类（1是教育类、2是非教育类）
+//     * @param excelTypeStr 表的类型（1是student.xlsx, 2是visitCompany.xlsx，3是companyBack.xlsx，4是preach.xlsx）
+//     * @param educationStr 学历（本科生或者研究生）
+//     * @return
+//     * @throws Exception
+//     */
     @RequestMapping("fileUpload")
     @ResponseBody
-    public void fileUpload(@RequestParam("fileName") MultipartFile file, String yearStr, String isEducationStr, String excelTypeStr, String educationStr) throws Exception{
-//    public String fileUpload(@RequestParam("fileName") MultipartFile file) throws Exception{
-        int year = Integer.parseInt(yearStr);
-        int isEducation = Integer.parseInt(isEducationStr);
-        int excelType = Integer.parseInt(excelTypeStr);
+//    public void fileUpload(@RequestParam("fileName") MultipartFile file, String yearStr, String isEducationStr, String excelTypeStr, String educationStr) throws Exception{
+    public void fileUpload(@RequestParam("fileName") MultipartFile file) throws Exception{
+//        int year = Integer.parseInt(yearStr);
+//        int isEducation = Integer.parseInt(isEducationStr);
+//        int excelType = Integer.parseInt(excelTypeStr);
 
-//        int year = 2019;
-//        String yearStr = "2019";
-//
-//        int isEducation = 0;
-//        int excelType = 4;
-//        String educationStr = "本科生";
-//
-//        String isEducationStr;
+        int year = 2019;
+        String yearStr = "2019";
+
+        int isEducation = 0;
+        int excelType = 1;
+        String educationStr = "本科生";
+
+        String isEducationStr;
 
         if(isEducation == 0){
             isEducationStr = "非教育";
@@ -127,10 +127,64 @@ public class ProcessDataController {
                     city.setCity_sign(entry.getValue());
                     city.setCity_studentFrom(0);
                     city.setEducation_yon(isEducation);
-                    if(cityService.selectByCityName(cityName) != null) {
+                    if(cityService.selectByCityNameAndYear(city) != null) {
                         cityService.updateCitySign(city);
                     }else{
                         cityService.addCity(city);
+                    }
+
+                    //五年签约数
+                    int fifthYearCitySign;
+                    int fourthYearCitySign;
+                    int thirdYearCitySign;
+                    int secondYearCitySign;
+                    int firstYearCitySign;
+
+                    if(cityService.selectByCityNameAndYear(city) != null){
+                        fifthYearCitySign = cityService.queryCitySignByYear(year, cityName).getCity_sign();
+                    }else{
+                        fifthYearCitySign = 0;
+                    }
+
+                    city.setYear(year - 1);
+                    if(cityService.selectByCityNameAndYear(city) != null){
+                        fourthYearCitySign = cityService.queryCitySignByYear(year - 1, cityName).getCity_sign();
+                    }else{
+                        fourthYearCitySign = 0;
+                    }
+
+                    city.setYear(year - 2);
+                    if(cityService.selectByCityNameAndYear(city) != null){
+                        thirdYearCitySign = cityService.queryCitySignByYear(year - 2, cityName).getCity_sign();
+                    }else{
+                        thirdYearCitySign = 0;
+                    }
+
+                    city.setYear(year - 3);
+                    if(cityService.selectByCityNameAndYear(city) != null){
+                        secondYearCitySign = cityService.queryCitySignByYear(year - 3, cityName).getCity_sign();
+                    }else{
+                        secondYearCitySign = 0;
+                    }
+
+                    city.setYear(year - 4);
+                    if(cityService.selectByCityNameAndYear(city) != null){
+                        firstYearCitySign = cityService.queryCitySignByYear(year - 4, cityName).getCity_sign();
+                    }else{
+                        firstYearCitySign = 0;
+                    }
+
+                    int fiveYearsCitySign = fifthYearCitySign + fourthYearCitySign + thirdYearCitySign + secondYearCitySign + firstYearCitySign;
+
+                    TotalVisit totalVisit = new TotalVisit();
+                    totalVisit.setCity_name(cityName);
+                    totalVisit.setYear(year);
+                    totalVisit.setSignNumber_b(fiveYearsCitySign);
+
+                    if(totalVisitService.selectByCityName(cityName) != null){
+                        totalVisitService.updateSignNumber_b(totalVisit);
+                    }else {
+                        totalVisitService.addTotalVisit(totalVisit);
                     }
                 }
 
@@ -147,7 +201,7 @@ public class ProcessDataController {
                     city.setCity_sign(0);
                     city.setCity_studentFrom(0);
                     city.setEducation_yon(isEducation);
-                    if(cityService.selectByCityName(cityName) != null) {
+                    if(cityService.selectByCityNameAndYear(city) != null) {
                         cityService.updateCityExpect(city);
                     }else{
                         cityService.addCity(city);
@@ -167,7 +221,7 @@ public class ProcessDataController {
                     city.setCity_sign(0);
                     city.setCity_studentFrom(entry.getValue());
                     city.setEducation_yon(isEducation);
-                    if(cityService.selectByCityName(cityName) != null) {
+                    if(cityService.selectByCityNameAndYear(city) != null) {
                         cityService.updateCityStudentFrom(city);
                     }else{
                         cityService.addCity(city);
@@ -178,11 +232,12 @@ public class ProcessDataController {
                 for(int i = 0;i < array.size();i++){
                     JSONObject jsonObject = array.getJSONObject(i);
                     String studentNameStr = jsonObject.getString("学生姓名");
-                    String studentFromStr = jsonObject.getString("生源城市");
                     String sexStr = jsonObject.getString("性别");
                     String nationStr = jsonObject.getString("民族");
+                    String gradeStr = jsonObject.getString("年级");
                     String collegeStr = jsonObject.getString("学院");
                     String majorStr = jsonObject.getString("专业");
+                    String studentFromStr = jsonObject.getString("生源城市");
                     String positionStr = jsonObject.getString("职位");
                     String signCompanyStr = jsonObject.getString("签约单位");
 
@@ -190,10 +245,11 @@ public class ProcessDataController {
                     student.setStudentName(studentNameStr);
                     student.setSex(sexStr);
                     student.setNation(nationStr);
-                    student.setEducation(educationStr);
-                    student.setSignType(isEducationStr);
+                    student.setGrade(gradeStr);
                     student.setCollege(collegeStr);
                     student.setMajor(majorStr);
+                    student.setEducation(educationStr);
+                    student.setSignType(isEducationStr);
                     student.setStudentFrom(studentFromStr);
                     student.setPosition(positionStr);
                     student.setStudent_year(yearStr);

@@ -16,7 +16,7 @@ public interface StudentService {
 
     public boolean addStudent(Student student) throws Exception;
 
-    public boolean updateStudentSex(Student student) throws Exception;
+    public boolean updateStudentCompanyId(Student student) throws Exception;
 
     public List<Student> queryStudentByYear(String student_year) throws Exception;
 }

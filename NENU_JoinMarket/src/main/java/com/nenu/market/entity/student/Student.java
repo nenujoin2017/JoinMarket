@@ -17,6 +17,8 @@ public class Student {
 
     private String education;
 
+    private String grade;
+
     private String signType;
 
     private String college;
@@ -71,6 +73,14 @@ public class Student {
 
     public void setEducation(String education) {
         this.education = education;
+    }
+
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade;
     }
 
     public String getSignType() {
@@ -145,6 +155,7 @@ public class Student {
                 ", sex='" + sex + '\'' +
                 ", nation='" + nation + '\'' +
                 ", education='" + education + '\'' +
+                ", grade='" + grade + '\'' +
                 ", signType='" + signType + '\'' +
                 ", college='" + college + '\'' +
                 ", major='" + major + '\'' +

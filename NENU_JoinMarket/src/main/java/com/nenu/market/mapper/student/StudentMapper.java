@@ -20,7 +20,7 @@ public interface StudentMapper {
 
     public boolean addStudent(@Param("student") Student student) throws Exception;
 
-    public boolean updateStudentSex(@Param("student") Student student) throws Exception;
+    public boolean updateStudentCompanyId(@Param("student") Student student) throws Exception;
 
     public boolean updateStudentNation(@Param("student") Student student) throws Exception;
 

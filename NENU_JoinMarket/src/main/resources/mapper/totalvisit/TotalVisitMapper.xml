@@ -17,8 +17,8 @@
 
     <insert id="addTotalVisit">
         INSERT INTO `t_totalvisit`
-        (city_name, city_year, visitCount, returnCount, education_yon)
-        VALUES (#{TotalVisit.city_name}, #{TotalVisit.year}, #{TotalVisit.visitCount}, #{TotalVisit.returnCount}, #{TotalVisit.education_yon})
+        (city_name, city_year, visitCount, returnCount, `signNumber(b)`, `signNumber(y)`, education_yon)
+        VALUES (#{TotalVisit.city_name}, #{TotalVisit.year}, #{TotalVisit.visitCount}, #{TotalVisit.returnCount}, #{TotalVisit.signNumber_b}, #{TotalVisit.signNumber_y}, #{TotalVisit.education_yon})
     </insert>
 
     <select id="selectByCityName" resultMap="TotalVisit">
@@ -36,6 +36,18 @@
     <update id="updateCityVisitCount">
         UPDATE t_totalvisit
         SET t_totalvisit.visitCount = #{TotalVisit.visitCount}
+        WHERE t_totalvisit.city_name = #{TotalVisit.city_name}
+    </update>
+
+    <update id="updateSignNumber_b">
+        UPDATE t_totalvisit
+        SET t_totalvisit.`signNumber(b)` = #{TotalVisit.signNumber_b}
+        WHERE t_totalvisit.city_name = #{TotalVisit.city_name}
+    </update>
+
+    <update id="updateSignNumber_y">
+        UPDATE t_totalvisit
+        SET t_totalvisit.`signNumber(y)` = #{TotalVisit.signNumber_y}
         WHERE t_totalvisit.city_name = #{TotalVisit.city_name}
     </update>
 

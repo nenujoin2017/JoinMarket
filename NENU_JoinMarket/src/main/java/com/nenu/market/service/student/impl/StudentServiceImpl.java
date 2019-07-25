@@ -33,8 +33,8 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public boolean updateStudentSex(Student student) throws Exception{
-        return studentMapper.updateStudentSex(student);
+    public boolean updateStudentCompanyId(Student student) throws Exception{
+        return studentMapper.updateStudentCompanyId(student);
     }
 
     @Override

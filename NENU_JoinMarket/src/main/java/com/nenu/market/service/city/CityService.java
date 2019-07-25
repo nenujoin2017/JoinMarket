@@ -15,7 +15,7 @@ public interface CityService {
 
     public boolean addCity(City city) throws Exception;
 
-    public City selectByCityName(String city_name) throws Exception;
+    public City selectByCityNameAndYear(City city) throws Exception;
 
     public boolean updateCitySign(City city) throws Exception;
 

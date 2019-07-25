@@ -38,8 +38,8 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public City selectByCityName(String city_name) throws Exception {
-        return cityMapper.selectByCityName(city_name);
+    public City selectByCityNameAndYear(City city) throws Exception {
+        return cityMapper.selectByCityNameAndYear(city);
     }
 
     @Override
