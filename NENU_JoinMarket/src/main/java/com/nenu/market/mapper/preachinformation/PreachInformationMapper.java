@@ -18,6 +18,8 @@ public interface PreachInformationMapper {
 
     public List<PreachInformation> listAll() throws Exception;
 
+    public List<PreachInformation> listByName(@Param("unitName") String unitName) throws Exception;
+
     public boolean addPreachInformation(@Param("PreachInformation") PreachInformation preachInformation) throws Exception;
 
     public List<PreachInformation> searchByTime(@Param("presentationTime") String presentationTime) throws Exception;

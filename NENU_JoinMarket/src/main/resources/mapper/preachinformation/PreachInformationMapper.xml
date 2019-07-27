@@ -15,6 +15,10 @@
     <select id="listAll" resultMap="PreachInformation">
         SELECT * FROM t_preachinformation
     </select>
+    <select id="listByName" resultMap="PreachInformation">
+        SELECT * from t_preachinformation
+        WHERE unitName=#{unitName}
+    </select>
     <insert id="addPreachInformation">
         INSERT INTO t_preachinformation (unitNumber,unitName,year,presentationTime,advocate,recruitmentPosition,signing,place)
         VALUES (#{PreachInformation.unitNumber},#{PreachInformation.unitName},#{PreachInformation.year},#{PreachInformation.presentationTime},#{PreachInformation.advocate},#{PreachInformation.recruitmentPosition},#{PreachInformation.signing},#{PreachInformation.place})

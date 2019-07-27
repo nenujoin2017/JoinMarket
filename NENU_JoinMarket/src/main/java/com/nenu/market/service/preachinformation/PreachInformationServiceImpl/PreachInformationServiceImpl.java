@@ -25,6 +25,11 @@ public class PreachInformationServiceImpl implements PreachInformationService {
     }
 
     @Override
+    public List<PreachInformation> listByName(String unitName) throws Exception {
+        return preachInformationMapper.listByName(unitName);
+    }
+
+    @Override
     public boolean addUser(PreachInformation preachInformation) throws Exception {
         boolean flag=preachInformationMapper.addPreachInformation(preachInformation);
         return flag;

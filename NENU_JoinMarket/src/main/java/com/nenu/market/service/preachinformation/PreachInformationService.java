@@ -13,6 +13,8 @@ public interface PreachInformationService {
 
     public List<PreachInformation> listAll() throws Exception;
 
+    public List<PreachInformation> listByName(String unitName) throws Exception;
+
     public boolean addUser(PreachInformation preachInformation) throws Exception;
 
     public List<PreachInformation> searchByTime(String presentationTime) throws Exception;
