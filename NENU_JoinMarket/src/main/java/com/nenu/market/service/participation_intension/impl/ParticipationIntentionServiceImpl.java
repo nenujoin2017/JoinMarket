@@ -101,13 +101,13 @@ public class ParticipationIntentionServiceImpl implements ParticipationIntention
      */
     @Override
     @Transactional
-    public List<ParticipationIntention> listByCVT(String company_name,String visitor_name,String time){
-        List<ParticipationIntention> list = Collections.emptyList();
+    public ParticipationIntention listByCVT(String company_name,String visitor_name,String time){
+        ParticipationIntention participationIntention = null;
         try {
-            list = participationIntentionMapper.listByCVT(company_name, visitor_name, time);
+            participationIntention = participationIntentionMapper.listByCVT(company_name, visitor_name, time);
         }catch (Exception e){
             e.printStackTrace();
         }
-        return list;
+        return participationIntention;
     }
 }

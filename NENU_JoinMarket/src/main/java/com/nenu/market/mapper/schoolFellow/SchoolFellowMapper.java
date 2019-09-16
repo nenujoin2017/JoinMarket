@@ -21,5 +21,5 @@ public interface SchoolFellowMapper {
 
     public boolean updateSchoolFellow(@Param("schoolFellow") SchoolFellow schoolFellow) throws Exception;
 
-//    public List<SchoolFellow> querySchoolFellow(@Param("key") String keyword,@Param("year") int year) throws Exception;
+    public List<SchoolFellow> querySchoolFellow(@Param("keyword") String keyword,@Param("year") String year) throws Exception;
 }

@@ -17,8 +17,6 @@ public class VisitPosition {
     private String webchatqq;
     private String visitor_name;
     private String time;
-    public VisitPosition() {
-    }
 
     public Integer getId() {
         return id;

@@ -55,4 +55,8 @@ public class testSchoolFellow {
         System.out.println(schoolFellowService.listSchoolFellow(company_name,visitor_name,"2021/7/8"));
     }
 
+    @Test
+    public void testQuerySchoolFellow() throws Exception{
+        System.out.println(schoolFellowService.querySchoolFellow("东师","%"));
+    }
 }

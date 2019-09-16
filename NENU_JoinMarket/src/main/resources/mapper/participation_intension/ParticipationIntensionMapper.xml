@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.nenu.market.mapper.position_requirements.PositionRequirementsMapper">
+<mapper namespace="com.nenu.market.mapper.participation_intention.ParticipationIntentionMapper">
 
-    <resultMap id="City" type="com.nenu.market.entity.position_requirements.PositionRequirements">
+    <resultMap id="City" type="com.nenu.market.entity.participation_intention.ParticipationIntention">
         <result column="id" jdbcType="INTEGER" property="id" />
         <result column="company_name" jdbcType="VARCHAR" property="company_name" />
         <result column="autumn_notnomal" jdbcType="INTEGER" property="autumn_notnomal" />

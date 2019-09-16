@@ -49,6 +49,6 @@ public interface ParticipationIntentionService {
      * @param time
      * @return
      */
-    public List<ParticipationIntention> listByCVT(String company_name,String visitor_name,String time);
+    public ParticipationIntention listByCVT(String company_name,String visitor_name,String time);
 }
 

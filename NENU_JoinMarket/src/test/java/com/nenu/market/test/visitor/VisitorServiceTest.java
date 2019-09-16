@@ -63,8 +63,9 @@ public class VisitorServiceTest {
         System.out.println(visitorMapper.queryVisitorByCompanyNameAndVisitorName("东师理想","打嗝","2018/2/3"));
     }
 
+    //模糊查询时关键词为%则搜全部，故该方法也可当作搜索单位用
     @Test
     public void testQueryVisitor(){
-        System.out.println(visitorMapper.queryVisitor("东师","2018"));
+        System.out.println(visitorMapper.queryVisitor("东师","%"));
     }
 }

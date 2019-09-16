@@ -17,5 +17,5 @@ public interface SchoolFellowService {
 
     public List<SchoolFellow> listSchoolFellow(String compamy_name, String visitor_name, String visitor_time) throws Exception;
 
-//    public List<SchoolFellow> querySchoolFellow(String keyword,int year) throws Exception;
+    public List<SchoolFellow> querySchoolFellow(String keyword,String year) throws Exception;
 }

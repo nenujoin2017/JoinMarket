@@ -33,4 +33,16 @@
         where company_name = #{company_name} AND visitor_name = #{visitor_name} AND visitor_time = #{visitor_time}
     </select>
 
+    <select id="querySchoolFellow" resultMap="schoolFellow">
+        SELECT *
+        FROM `t_schoolfellow`
+        WHERE(company_name LIKE '%${keyword}%'
+        OR name LIKE '%${keyword}%'
+        OR major LIKE '%${keyword}%'
+        OR education LIKE '%${keyword}%'
+        OR time LIKE '%${keyword}%'
+        OR contact LIKE '%${keyword}%'
+        OR visitor_name LIKE '%${keyword}%')
+        AND visitor_time LIKE '${year}%'
+    </select>
 </mapper>

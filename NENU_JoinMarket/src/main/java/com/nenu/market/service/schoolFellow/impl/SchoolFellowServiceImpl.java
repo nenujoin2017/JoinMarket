@@ -36,10 +36,10 @@ public class SchoolFellowServiceImpl implements SchoolFellowService {
         return schoolFellowList;
     }
 
-//    @Override
-//    public List<SchoolFellow> querySchoolFellow(String keyword,int year) throws Exception{
-//        List<SchoolFellow> schoolFellowList = Collections.emptyList();
-//        schoolFellowList = schoolFellowMapper.querySchoolFellow(keyword,year);
-//        return schoolFellowList;
-//    }
+    @Override
+    public List<SchoolFellow> querySchoolFellow(String keyword,String year) throws Exception{
+        List<SchoolFellow> schoolFellowList = Collections.emptyList();
+        schoolFellowList = schoolFellowMapper.querySchoolFellow(keyword,year);
+        return schoolFellowList;
+    }
 }
