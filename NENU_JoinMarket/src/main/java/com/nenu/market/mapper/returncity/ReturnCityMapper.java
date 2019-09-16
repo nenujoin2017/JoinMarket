@@ -31,4 +31,5 @@ public interface ReturnCityMapper {
      * @throws Exception
      */
     public List<ReturnCity> SelectCity2(@Param("returnCity")ReturnCity returnCity);
+
 }

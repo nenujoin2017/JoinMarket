@@ -17,6 +17,11 @@ public class ReturnCity {
 
     private Integer education_yon;
 
+    private String return_rate;
+
+    private String return_rank;
+
+
     public String getCity_name() {
         return city_name;
     }
@@ -65,6 +70,26 @@ public class ReturnCity {
         this.education_yon = education_yon;
     }
 
+    public Integer getCity_year() {
+        return city_year;
+    }
+
+    public String getReturn_rate() {
+        return return_rate;
+    }
+
+    public void setReturn_rate(String return_rate) {
+        this.return_rate = return_rate;
+    }
+
+    public String getReturn_rank() {
+        return return_rank;
+    }
+
+    public void setReturn_rank(String return_rank) {
+        this.return_rank = return_rank;
+    }
+
     @Override
     public String toString() {
         return "ReturnCity{" +
@@ -72,8 +97,10 @@ public class ReturnCity {
                 ", province='" + province + '\'' +
                 ", returnCount=" + returnCount +
                 ", visitCount=" + visitCount +
-                ", year=" + city_year +
+                ", city_year=" + city_year +
                 ", education_yon=" + education_yon +
+                ", return_rate='" + return_rate + '\'' +
+                ", return_rank='" + return_rank + '\'' +
                 '}';
     }
 }

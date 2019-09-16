@@ -61,29 +61,23 @@ public class ReturnCityController {
     }
 
     @RequestMapping(value = "select")
-    public String selectCity(String education, String Syear, String city_name){
+    public String selectCity(String education, String Syear, String city_name) throws Exception{
+        List<ReturnCity> list =returnCityService.listAllReturnCity();
         List<ReturnCity> list1 = Collections.emptyList();
         int education_yon = 1;
-        if(education == "教育类"){
-            education_yon = 1;
-        }
-        if(education == "非教育类"){
+        if(education.equals("非教育类") ){
             education_yon = 0;
         }
         int year = Integer.parseInt(Syear);
         ReturnCity returnCity = new ReturnCity();
         returnCity.setEducation_yon(education_yon);
         returnCity.setCity_year(year);
+        city_name = "%" + city_name + "%";
         returnCity.setCity_name(city_name);
-        try{
-            if(city_name == "城市"){
-                list1 = returnCityService.SelectCity2(returnCity);
-            }else{
-                list1 = returnCityService.SelectCity1(returnCity);
-            }
-
-        }catch (Exception ex){
-            ex.printStackTrace();
+        if(city_name.equals("%%")){
+            list1 = returnCityService.SelectCity2(returnCity);
+        }else{
+            list1 = returnCityService.SelectCity1(returnCity);
         }
         JSONArray array = JSONArray.parseArray(JSON.toJSONString(list1));
         for(int i=0;i<array.size();i++){

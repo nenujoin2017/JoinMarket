@@ -22,4 +22,8 @@ public interface TotalVisitMapper {
 
     public boolean updateCityVisitCount(@Param("TotalVisit") TotalVisit totalVisit) throws Exception;
 
+    public boolean updateSignNumber_b(@Param("TotalVisit") TotalVisit totalVisit) throws Exception;
+
+    public boolean updateSignNumber_y(@Param("TotalVisit") TotalVisit totalVisit) throws Exception;
+
 }

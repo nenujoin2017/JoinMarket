@@ -19,7 +19,7 @@ public class TotalVisit {
 
     private int signNumber_b;
 
-    private int getSignNumber_y;
+    private int signNumber_y;
 
     private int education_yon;
 
@@ -71,12 +71,12 @@ public class TotalVisit {
         this.signNumber_b = signNumber_b;
     }
 
-    public int getGetSignNumber_y() {
-        return getSignNumber_y;
+    public int getSignNumber_y() {
+        return signNumber_y;
     }
 
-    public void setGetSignNumber_y(int getSignNumber_y) {
-        this.getSignNumber_y = getSignNumber_y;
+    public void setSignNumber_y(int signNumber_y) {
+        this.signNumber_y = signNumber_y;
     }
 
     public int getEducation_yon() {
@@ -96,7 +96,7 @@ public class TotalVisit {
                 ", visitCount=" + visitCount +
                 ", returnCount=" + returnCount +
                 ", signNumber_b=" + signNumber_b +
-                ", getSignNumber_y=" + getSignNumber_y +
+                ", signNumber_y=" + signNumber_y +
                 ", education_yon=" + education_yon +
                 '}';
     }

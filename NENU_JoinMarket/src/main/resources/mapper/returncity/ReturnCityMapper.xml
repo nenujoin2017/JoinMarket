@@ -14,26 +14,22 @@
         <result property="education_yon" column="education_yon"/>
     </resultMap>
 
-
-    <select id="listAllReturnCity" resultMap="returnCity">
+    <select id="listAllReturnCity" resultType="returnCity">
         SELECT `city_name`,`returnCount`,`city_year`,`visitCount`, `province`,`education_yon`
         FROM `t_totalvisit`, `t_province`
         where t_totalvisit.city_name = t_province.city
     </select>
 
-    <select id="SelectCity1" resultMap="returnCity">
+    <select id="SelectCity1" resultType="returnCity">
         SELECT `city_name`, `returnCount`, `city_year`,`visitCount`, `province`,`education_yon`
         FROM `t_totalvisit`, `t_province`
-        where t_totalvisit.city_name = t_province.city AND education_yon = #{returnCity.education_yon} AND city_year = #{returnCity.city_year} AND city_name =#{returnCity.city_name}
+        where t_totalvisit.city_name = t_province.city AND education_yon = #{returnCity.education_yon} AND city_year = #{returnCity.city_year} AND(city_name LIKE #{returnCity.city_name} OR province LIKE #{returnCity.city_name})
     </select>
 
-    <select id="SelectCity2" resultMap="returnCity">
+    <select id="SelectCity2" resultType="returnCity">
         SELECT `city_name`, `returnCount`, `city_year`,`visitCount`, `province`,`education_yon`
         FROM `t_totalvisit`, `t_province`
-        where t_totalvisit.city_name = t_province.city AND education_yon = #{returnCity.education_yon} AND city_year = #{returnCity.year}
+        where t_totalvisit.city_name = t_province.city AND education_yon = #{returnCity.education_yon} AND city_year = #{returnCity.city_year}
     </select>
-
-
-
 
 </mapper>

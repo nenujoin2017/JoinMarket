@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.nenu.market.entity.studentFrom.StudentFrom;
 import com.nenu.market.service.studentfrom.StudentFromService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -65,106 +66,37 @@ public class StudentFromController {
     }
 
     @RequestMapping(value = "select")
-    public String selectStudentFromCity(String education, String Syear, String city_name,String count) throws Exception{
+    public String selectStudentFromCity(String education, String Syear, String city_name) throws Exception{
+        city_name = "%" + city_name + "%";
+        System.out.println(education);
+        System.out.println(Syear);
+        System.out.println(city_name);
         List<StudentFrom> list1 = Collections.emptyList();
-        StudentFrom studentFrom = new StudentFrom();
+        List<StudentFrom> list = studentFromService.listStudentFrom();
+        int year = Integer.parseInt(Syear);
         int education_yon = 1;
-        if(education == "教育"){
-            education_yon = 1;
-        }
-        if(education == "非教育"){
+        if(education.equals("非教育类")){
             education_yon = 0;
         }
-        int year = Integer.parseInt(Syear);
-        if(city_name == "" && count=="生源人数"){
-            studentFrom.setEducation_yon(education_yon);
-            studentFrom.setCity_year(year);
+        StudentFrom studentFrom = new StudentFrom();
+        studentFrom.setCity_year(year);
+        studentFrom.setEducation_yon(education_yon);
+        studentFrom.setCity_name(city_name);
+        System.out.println(studentFrom.getEducation_yon());
+        if(city_name.equals("%%")){
             list1 = studentFromService.Select4(studentFrom);
-        }
-        if(count == "生源人数" && city_name == ""){
-            studentFrom.setCity_year(year);
-            studentFrom.setEducation_yon(education_yon);
-            studentFrom.setCity_name(city_name);
+        }else{
             list1 = studentFromService.Select1(studentFrom);
         }
-        if(count == "100以上" && city_name == ""){
-            studentFrom.setCity_year(year);
-            studentFrom.setEducation_yon(education_yon);
-            studentFrom.setMin(100);
-            studentFrom.setMax(1000);
-            list1 = studentFromService.Select2(studentFrom);
-        }
-        if(count == "50-100" && city_name == ""){
-            studentFrom.setCity_year(year);
-            studentFrom.setEducation_yon(education_yon);
-            studentFrom.setMin(50);
-            studentFrom.setMax(100);
-            list1 = studentFromService.Select2(studentFrom);
-        }
-        if(count == "20-50" && city_name == ""){
-            studentFrom.setCity_year(year);
-            studentFrom.setEducation_yon(education_yon);
-            studentFrom.setMin(20);
-            studentFrom.setMax(50);
-            list1 = studentFromService.Select2(studentFrom);
-        }
-        if(count == "10-20" && city_name == ""){
-            studentFrom.setCity_year(year);
-            studentFrom.setEducation_yon(education_yon);
-            studentFrom.setMin(10);
-            studentFrom.setMax(20);
-            list1 = studentFromService.Select2(studentFrom);
-        }
-        if(count == "10以下" && city_name == ""){
-            studentFrom.setCity_year(year);
-            studentFrom.setEducation_yon(education_yon);
-            studentFrom.setMin(0);
-            studentFrom.setMax(10);
-            list1 = studentFromService.Select2(studentFrom);
-        }
-        if(count == "100以上" && city_name != ""){
-            studentFrom.setCity_year(year);
-            studentFrom.setEducation_yon(education_yon);
-            studentFrom.setMin(100);
-            studentFrom.setMax(1000);
-            list1 = studentFromService.Select3(studentFrom);
-        }
-        if(count == "50-100" && city_name != ""){
-            studentFrom.setCity_year(year);
-            studentFrom.setEducation_yon(education_yon);
-            studentFrom.setMin(50);
-            studentFrom.setMax(100);
-            list1 = studentFromService.Select3(studentFrom);
-        }
-        if(count == "20-50" && city_name != ""){
-            studentFrom.setCity_year(year);
-            studentFrom.setEducation_yon(education_yon);
-            studentFrom.setMin(20);
-            studentFrom.setMax(50);
-            list1 = studentFromService.Select3(studentFrom);
-        }
-        if(count == "10-20" && city_name != ""){
-            studentFrom.setCity_year(year);
-            studentFrom.setEducation_yon(education_yon);
-            studentFrom.setMin(10);
-            studentFrom.setMax(20);
-            list1 = studentFromService.Select3(studentFrom);
-        }
-        if(count == "10以下" && city_name != ""){
-            studentFrom.setCity_year(year);
-            studentFrom.setEducation_yon(education_yon);
-            studentFrom.setMin(0);
-            studentFrom.setMax(10);
-            list1 = studentFromService.Select3(studentFrom);
-        }
-        JSONArray array = JSONArray.parseArray(JSON.toJSONString(list1));
+        JSONArray array1 = JSONArray.parseArray(JSON.toJSONString(list));
         double s = 0;
-        for(int i=0 ; i<array.size();i++){
-            JSONObject jsonObject = array.getJSONObject(i);
-            String studentfromstr = jsonObject.getString("city_studentFrom");
+        for(int i=0 ; i<array1.size();i++){
+            JSONObject jsonObject1 = array1.getJSONObject(i);
+            String studentfromstr = jsonObject1.getString("city_studentFrom");
             int studentfrom = Integer.parseInt(studentfromstr);
             s = s + studentfrom;
         }
+        JSONArray array = JSONArray.parseArray(JSON.toJSONString(list1));
         for(int i=0;i<array.size();i++){
             JSONObject jsonObject = array.getJSONObject(i);
             String studentfromstr = jsonObject.getString("city_studentFrom");
@@ -187,9 +119,7 @@ public class StudentFromController {
                 jsonObject.put("student_rank", "E");
             }
         }
-        System.out.println(s);
         String list2 = array.toString();
         return list2;
-
     }
 }

@@ -42,7 +42,7 @@ public class ReadExcel {
             //建立数组储存当前行的所有栏目
             String[] cells = new String[temp];
             //初始化数组
-            for (int k = 0; k <temp; k++) {
+            for (int k = 0; k < temp; k++) {
                 cells[k] = row.getCell(k).getStringCellValue();
             }
             //处理json格式
@@ -62,7 +62,7 @@ public class ReadExcel {
         //处理json格式
         stringBuffer.append("]");
         swb.close();
-//        System.out.println(stringBuffer.toString());
+        System.out.println(stringBuffer.toString());
         return stringBuffer.toString();
     }
 }

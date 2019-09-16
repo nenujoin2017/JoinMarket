@@ -31,10 +31,10 @@
         VALUES (#{City.city_name}, #{City.year}, #{City.city_exceptation}, #{City.city_sign}, #{City.city_studentFrom}, #{City.education_yon})
     </insert>
 
-    <select id="selectByCityName" resultMap="City">
-        SELECT *
+    <select id="selectByCityNameAndYear" resultMap="City">
+        SELECT DISTINCT *
         FROM t_city
-        WHERE t_city.city_name = #{city_name}
+        WHERE t_city.city_name = #{city.city_name} and t_city.city_year = #{city.year}
     </select>
 
     <update id="updateCityExpect">

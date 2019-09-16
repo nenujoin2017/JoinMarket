@@ -18,4 +18,9 @@ public interface TotalVisitService {
 
     public boolean updateCityVisitCount(TotalVisit totalVisit) throws Exception;
 
+    public boolean updateSignNumber_b(TotalVisit totalVisit) throws Exception;
+
+    public boolean updateSignNumber_y(TotalVisit totalVisit) throws Exception;
+
+
 }

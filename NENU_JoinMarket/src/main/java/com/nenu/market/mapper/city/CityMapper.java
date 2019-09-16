@@ -20,7 +20,7 @@ public interface CityMapper {
 
     public boolean addCity(@Param("City") City city) throws Exception;
 
-    public City selectByCityName(@Param("city_name") String city_name) throws Exception;
+    public City selectByCityNameAndYear(@Param("city") City city) throws Exception;
 
     public boolean updateCityExpect(@Param("city") City city) throws Exception;
 

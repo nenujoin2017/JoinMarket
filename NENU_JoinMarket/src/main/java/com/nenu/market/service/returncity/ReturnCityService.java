@@ -1,5 +1,6 @@
 package com.nenu.market.service.returncity;
 
+import com.nenu.market.entity.company.Company;
 import com.nenu.market.entity.returncity.ReturnCity;
 
 import java.util.List;
@@ -26,4 +27,6 @@ public interface ReturnCityService {
      * @throws Exception
      */
     public List<ReturnCity> SelectCity2(ReturnCity returnCity) throws Exception;
+
+
 }

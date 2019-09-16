@@ -36,4 +36,14 @@ public class TotalVisitServiceImpl implements TotalVisitService {
     public boolean updateCityVisitCount(TotalVisit totalVisit) throws Exception{
         return totalVisitMapper.updateCityVisitCount(totalVisit);
     }
+
+    @Override
+    public boolean updateSignNumber_b(TotalVisit totalVisit) throws Exception{
+        return totalVisitMapper.updateSignNumber_b(totalVisit);
+    }
+
+    @Override
+    public boolean updateSignNumber_y(TotalVisit totalVisit) throws Exception{
+        return totalVisitMapper.updateSignNumber_y(totalVisit);
+    }
 }
