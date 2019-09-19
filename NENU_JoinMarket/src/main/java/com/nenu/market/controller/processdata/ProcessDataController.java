@@ -63,20 +63,22 @@ public class ProcessDataController {
 //     */
     @RequestMapping("fileUpload")
     @ResponseBody
-//    public void fileUpload(@RequestParam("fileName") MultipartFile file, String yearStr, String isEducationStr, String excelTypeStr, String educationStr) throws Exception{
-    public void fileUpload(@RequestParam("fileName") MultipartFile file) throws Exception{
-//        int year = Integer.parseInt(yearStr);
-//        int isEducation = Integer.parseInt(isEducationStr);
-//        int excelType = Integer.parseInt(excelTypeStr);
+    public void fileUpload(@RequestParam("fileName") MultipartFile file, String yearStr, String isEducationStr, String excelTypeStr, String educationStr) throws Exception{
+//    public void fileUpload(@RequestParam("fileName") MultipartFile file) throws Exception{
+        int year = Integer.parseInt(yearStr);
+        int isEducation = Integer.parseInt(isEducationStr);
+        int excelType = Integer.parseInt(excelTypeStr);
 
-        int year = 2019;
-        String yearStr = "2019";
+//        int year = 2019;
+//        String yearStr = "2019";
 
-        int isEducation = 0;
-        int excelType = 1;
-        String educationStr = "本科生";
+//        int isEducation = 0;
 
-        String isEducationStr;
+//        int excelType = 1;
+
+//        String educationStr = "本科生";
+
+//        String isEducationStr;
 
         if(isEducation == 0){
             isEducationStr = "非教育";

@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : localhost_3306
+ Source Server         : Join
  Source Server Type    : MySQL
- Source Server Version : 80015
- Source Host           : localhost:3306
+ Source Server Version : 50644
+ Source Host           : 47.103.10.220:3306
  Source Schema         : db_nenu_market
 
  Target Server Type    : MySQL
- Target Server Version : 80015
+ Target Server Version : 50644
  File Encoding         : 65001
 
- Date: 21/05/2019 19:25:26
+ Date: 19/09/2019 22:10:31
 */
 
 SET NAMES utf8mb4;
@@ -25,35 +25,35 @@ CREATE TABLE `t_city`  (
   `id` int(255) NOT NULL AUTO_INCREMENT,
   `city_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '城市名',
   `city_year` int(255) DEFAULT NULL COMMENT '年份',
-  `city_exceptation` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '毕业期望',
-  `city_sign` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '本届签约',
-  `city_studentFrom` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '毕业生源',
-  `city_visit` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '往届走访（我们走访城市的次数）',
-  `city_recency` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '回访率',
+  `city_exceptation` double(255, 0) NOT NULL COMMENT '毕业期望',
+  `city_sign` int(255) DEFAULT NULL COMMENT '本届签约',
+  `city_studentFrom` int(255) DEFAULT NULL COMMENT '毕业生源',
+  `city_visit` int(255) DEFAULT NULL COMMENT '往届走访（我们走访城市的次数）',
+  `city_recency` int(255) DEFAULT NULL COMMENT '回访率',
   `city_grading` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '城市分级',
   `city_score` double(255, 0) DEFAULT NULL COMMENT '综合评分',
   `city_unit` int(255) DEFAULT NULL COMMENT '签约单位',
   `city_people` int(255) DEFAULT NULL COMMENT '签约人数',
   `education_yon` int(255) DEFAULT NULL COMMENT '是否为教育行业',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 67 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 146 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of t_city
 -- ----------------------------
-INSERT INTO `t_city` VALUES (67, '洛阳市', 2019, '0', '3', '0', NULL, NULL, NULL, NULL, NULL, NULL, 0);
-INSERT INTO `t_city` VALUES (68, '长春市', 2019, '3', '2', '1', NULL, NULL, NULL, NULL, NULL, NULL, 0);
-INSERT INTO `t_city` VALUES (69, '海南市', 2019, '0', '2', '0', NULL, NULL, NULL, NULL, NULL, NULL, 0);
-INSERT INTO `t_city` VALUES (70, '哈尔滨市', 2019, '2', '1', '2', NULL, NULL, NULL, NULL, NULL, NULL, 0);
-INSERT INTO `t_city` VALUES (71, '武汉市', 2019, '0', '1', '0', NULL, NULL, NULL, NULL, NULL, NULL, 0);
-INSERT INTO `t_city` VALUES (72, '东莞市', 2019, '1', '0', '0', NULL, NULL, NULL, NULL, NULL, NULL, 0);
-INSERT INTO `t_city` VALUES (73, '深圳市', 2019, '1', '0', '0', NULL, NULL, NULL, NULL, NULL, NULL, 0);
-INSERT INTO `t_city` VALUES (74, '北京市', 2019, '1', '0', '1', NULL, NULL, NULL, NULL, NULL, NULL, 0);
-INSERT INTO `t_city` VALUES (75, '沈阳市', 2019, '1', '0', '0', NULL, NULL, NULL, NULL, NULL, NULL, 0);
-INSERT INTO `t_city` VALUES (76, '南宁市', 2019, '0', '0', '2', NULL, NULL, NULL, NULL, NULL, NULL, 0);
-INSERT INTO `t_city` VALUES (77, '柳州市', 2019, '0', '0', '1', NULL, NULL, NULL, NULL, NULL, NULL, 0);
-INSERT INTO `t_city` VALUES (78, '郑州市', 2019, '0', '0', '1', NULL, NULL, NULL, NULL, NULL, NULL, 0);
-INSERT INTO `t_city` VALUES (79, '信阳市', 2019, '0', '0', '1', NULL, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `t_city` VALUES (133, '洛阳市', 2019, 2, 3, 0, 1, 22, '一线城市', 4, 5, 7, 1);
+INSERT INTO `t_city` VALUES (134, '长春市', 2019, 3, 2, 1, 68, 7, '二线城市', 4, 4, 2, 1);
+INSERT INTO `t_city` VALUES (135, '海南市', 2019, 0, 2, 0, 43, 3, '一线城市', 4, 4, 5, 0);
+INSERT INTO `t_city` VALUES (136, '哈尔滨市', 2019, 2, 1, 2, 3, 3, '二线城市', 4, 4, 4, 0);
+INSERT INTO `t_city` VALUES (137, '武汉市', 2019, 0, 1, 0, 2, 3, '二线城市', 4, 5, 13, 0);
+INSERT INTO `t_city` VALUES (138, '东莞市', 2019, 1, 0, 0, 43, 3, '二线城市', 4, 5, 10, 0);
+INSERT INTO `t_city` VALUES (139, '深圳市', 2019, 1, 0, 0, 2, 3, '二线城市', 4, 5, 9, 0);
+INSERT INTO `t_city` VALUES (140, '北京市', 2019, 1, 0, 1, 2, 3, '二线城市', 4, 5, 7, 0);
+INSERT INTO `t_city` VALUES (141, '沈阳市', 2019, 1, 0, 0, 2, 3, '二线城市', 4, 5, 8, 0);
+INSERT INTO `t_city` VALUES (142, '南宁市', 2019, 0, 0, 2, 2, 3, '二线城市', 4, 5, 4, 0);
+INSERT INTO `t_city` VALUES (143, '柳州市', 2019, 0, 0, 1, 2, 3, '二线城市', 4, 5, 6, 0);
+INSERT INTO `t_city` VALUES (144, '郑州市', 2019, 0, 0, 1, 2, 3, '二线城市', 4, 5, 1, 0);
+INSERT INTO `t_city` VALUES (145, '信阳市', 2019, 0, 0, 1, 2, 3, '二线城市', 4, 5, 3, 0);
 
 -- ----------------------------
 -- Table structure for t_citylevel
@@ -69,6 +69,30 @@ CREATE TABLE `t_citylevel`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
+-- Table structure for t_company
+-- ----------------------------
+DROP TABLE IF EXISTS `t_company`;
+CREATE TABLE `t_company`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '单位id',
+  `company_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '单位名称',
+  `company_nature` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '单位性质',
+  `company_city` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '所在城市',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of t_company
+-- ----------------------------
+INSERT INTO `t_company` VALUES (1, '东北师范大学', '高等教育单位', '长春市');
+INSERT INTO `t_company` VALUES (2, '东北师范大学', '高等教育单位', '长春市');
+INSERT INTO `t_company` VALUES (3, '东北师范大学', '高等教育单位', '长春市');
+INSERT INTO `t_company` VALUES (4, '东北师范大学', '高等教育单位', '长春市');
+INSERT INTO `t_company` VALUES (5, '东北师范大学', '高等教育单位', '长春市');
+INSERT INTO `t_company` VALUES (6, '东北师范大学', '高等教育单位', '长春市');
+INSERT INTO `t_company` VALUES (7, '东北师范大学', '高等教育单位', '长春市');
+INSERT INTO `t_company` VALUES (8, '东北师范大学', '奥术大师', '长春市');
+
+-- ----------------------------
 -- Table structure for t_participation_intention
 -- ----------------------------
 DROP TABLE IF EXISTS `t_participation_intention`;
@@ -82,8 +106,16 @@ CREATE TABLE `t_participation_intention`  (
   `spring_goodquality` bit(1) DEFAULT NULL COMMENT '春季精品洽谈月专场',
   `internet` bit(1) DEFAULT NULL COMMENT '网上发布招聘信息',
   `nofair` bit(1) DEFAULT NULL COMMENT '暂不考虑参加招聘会',
+  `visitor_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '走访人员',
+  `time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '走访时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of t_participation_intention
+-- ----------------------------
+INSERT INTO `t_participation_intention` VALUES (1, 'join', b'1', b'1', b'1', b'1', b'1', b'1', b'1', 'xuwq', '2019/7/23');
+INSERT INTO `t_participation_intention` VALUES (2, 'bilibili', b'1', b'1', b'1', b'1', b'1', b'1', b'1', 'aha', '2019/7/23');
 
 -- ----------------------------
 -- Table structure for t_position_requirements
@@ -96,8 +128,40 @@ CREATE TABLE `t_position_requirements`  (
   `education` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '学历',
   `number` int(255) DEFAULT NULL COMMENT '数量',
   `others` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '其他',
+  `visitor_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '走访人员',
+  `time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '走访时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of t_position_requirements
+-- ----------------------------
+INSERT INTO `t_position_requirements` VALUES (1, 'bilibili', 'sc', 'college', 1, '1', 'aha', '2019/7/23');
+INSERT INTO `t_position_requirements` VALUES (2, 'join', 'sc', 'college', 2, '2', 'xuwq', '2019/7/23');
+
+-- ----------------------------
+-- Table structure for t_preachinformation
+-- ----------------------------
+DROP TABLE IF EXISTS `t_preachinformation`;
+CREATE TABLE `t_preachinformation`  (
+  `unitNumber` int(255) NOT NULL AUTO_INCREMENT COMMENT '单位序号',
+  `unitName` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '单位名称',
+  `year` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '' COMMENT '年份',
+  `presentationTime` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '' COMMENT '来校宣讲时间',
+  `advocate` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '' COMMENT '宣讲人员',
+  `recruitmentPosition` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '' COMMENT '招聘职位',
+  `signing` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '' COMMENT '签约人数',
+  `place` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '' COMMENT '宣讲会地点',
+  PRIMARY KEY (`unitNumber`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of t_preachinformation
+-- ----------------------------
+INSERT INTO `t_preachinformation` VALUES (1, '2', '2019', '阿萨德', '撒大声地', '撒大声地', '实打实', '阿萨');
+INSERT INTO `t_preachinformation` VALUES (2, '东北师范大学', '2019', '撒大声地', '阿萨德', '阿萨德', '阿萨德', '阿萨德');
+INSERT INTO `t_preachinformation` VALUES (3, '西南大学', '2012', '2019.10.3', '赵琦君', '秘书员', '2', '净月信息发布厅');
+INSERT INTO `t_preachinformation` VALUES (4, '西南大学', '2012', '2019.10.3', '赵琦君', '秘书员', '2', '净月信息发布厅');
 
 -- ----------------------------
 -- Table structure for t_province
@@ -517,8 +581,55 @@ CREATE TABLE `t_schoolfellow`  (
   `education` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '学历',
   `time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '入职时间',
   `contact` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '联系方式',
+  `visitor_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '走访人员',
+  `visitor_time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '走访时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of t_schoolfellow
+-- ----------------------------
+INSERT INTO `t_schoolfellow` VALUES (1, 'join', 'aha', 'cs', 'college', '2019/7/23', '110', 'xuwq', '2019/7/23');
+INSERT INTO `t_schoolfellow` VALUES (2, 'bilibili', 'xuwq', 'cs', 'college', '2019/7/23', '120', 'aha', '2019/7/23');
+
+-- ----------------------------
+-- Table structure for t_student
+-- ----------------------------
+DROP TABLE IF EXISTS `t_student`;
+CREATE TABLE `t_student`  (
+  `id` int(255) NOT NULL AUTO_INCREMENT COMMENT '学生ID编号',
+  `studentName` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '学生姓名',
+  `sex` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '学生性别',
+  `nation` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '学生民族',
+  `education` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '学生学历',
+  `grade` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '学生年级',
+  `signType` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '签约类别（教育或非教育）',
+  `college` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '学院',
+  `major` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '专业',
+  `studentFrom` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '生源地',
+  `position` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '职位',
+  `student_year` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '年份',
+  `signCompany` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '签约单位名称',
+  `companyId` int(255) DEFAULT NULL COMMENT '签约单位编号',
+  `signCity` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '签约城市',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 279 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of t_student
+-- ----------------------------
+INSERT INTO `t_student` VALUES (267, '张三', '女', '汉族', '本科生', '2016级', '非教育', '信息科学与技术学院', '软件工程', '郑州市', '程序员', '2019', '恒大', 2, '广州市');
+INSERT INTO `t_student` VALUES (268, '李四', '男', '壮族', '本科生', '2016级', '非教育', '物理学院', '物理', '柳州市', '文员', '2019', '恒大', 2, '广州市');
+INSERT INTO `t_student` VALUES (269, '王五', '男', '汉族', '本科生', '2017级', '非教育', '化学学院', '化学', '南宁市', '文员', '2019', '恒大', 2, '广州市');
+INSERT INTO `t_student` VALUES (270, '王二麻子', '女', '汉族', '本科生', '2016级', '非教育', '环境学院', '环境工程', '信阳市', '文员', '2019', '恒大', 2, '广州市');
+INSERT INTO `t_student` VALUES (271, '迪丽热巴', '男', '满族', '本科生', '2016级', '非教育', '信息科学与技术学院', '计算机', '哈尔滨市', '程序员', '2019', '恒大', 2, '广州市');
+INSERT INTO `t_student` VALUES (272, '测试', '男', '汉族', '本科生', '2016级', '非教育', '信息科学与技术学院', '软件工程', '南宁市', '程序员', '2019', '恒大', 2, '广州市');
+INSERT INTO `t_student` VALUES (273, '张三', '女', '汉族', '本科生', '2017级', '非教育', '信息科学与技术学院', '软件工程', '郑州市', '程序员', '2019', '恒大', 2, '广州市');
+INSERT INTO `t_student` VALUES (274, '李四', '男', '壮族', '本科生', '2014级', '非教育', '物理学院', '物理', '柳州市', '文员', '2019', '恒大', 2, '广州市');
+INSERT INTO `t_student` VALUES (275, '王五', '男', '汉族', '本科生', '2016级', '非教育', '化学学院', '化学', '南宁市', '文员', '2019', '恒大', 2, '广州市');
+INSERT INTO `t_student` VALUES (276, '王二麻子', '女', '汉族', '本科生', '2017级', '非教育', '环境学院', '环境工程', '信阳市', '文员', '2019', '恒大', 2, '广州市');
+INSERT INTO `t_student` VALUES (277, '迪丽热巴', '男', '满族', '本科生', '2015级', '非教育', '信息科学与技术学院', '计算机', '哈尔滨市', '程序员', '2019', '恒大', 2, '广州市');
+INSERT INTO `t_student` VALUES (278, '测试', '男', '汉族', '本科生', '2017级', '非教育', '信息科学与技术学院', '软件工程', '南宁市', '程序员', '2019', '恒大', 2, '广州市');
 
 -- ----------------------------
 -- Table structure for t_totalvisit
@@ -534,16 +645,16 @@ CREATE TABLE `t_totalvisit`  (
   `signNumber(y)` int(255) DEFAULT NULL COMMENT '五年签约数（研）',
   `education_yon` int(255) DEFAULT NULL COMMENT '是否为教育行业',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 47 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 87 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of t_totalvisit
 -- ----------------------------
-INSERT INTO `t_totalvisit` VALUES (77, '深圳市', 2019, 3, 3, NULL, NULL, 1);
-INSERT INTO `t_totalvisit` VALUES (78, '长春市', 2019, 2, 2, NULL, NULL, 1);
-INSERT INTO `t_totalvisit` VALUES (79, '洛阳市', 2019, 1, 2, NULL, NULL, 1);
-INSERT INTO `t_totalvisit` VALUES (80, '海南市', 2019, 0, 2, NULL, NULL, 1);
-INSERT INTO `t_totalvisit` VALUES (81, '广州市', 2019, 4, 2, NULL, NULL, 1);
+INSERT INTO `t_totalvisit` VALUES (82, '广州市', 2019, 4, 2, 65, 42, 0);
+INSERT INTO `t_totalvisit` VALUES (83, '深圳市', 2018, 3, 3, 76, 34, 0);
+INSERT INTO `t_totalvisit` VALUES (84, '长春市', 2019, 2, 2, 45, 23, 1);
+INSERT INTO `t_totalvisit` VALUES (85, '洛阳市', 2019, 1, 2, 54, 30, 0);
+INSERT INTO `t_totalvisit` VALUES (86, '海南市', 2019, 0, 2, 76, 20, 0);
 
 -- ----------------------------
 -- Table structure for t_visit
@@ -575,7 +686,13 @@ CREATE TABLE `t_visitor`  (
   `feedback` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '单位反馈信息',
   `conclude` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '简要总结',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of t_visitor
+-- ----------------------------
+INSERT INTO `t_visitor` VALUES (1, 'xuwq', '2019/7/23', 'join', 'super', '长春', '1', '1', '1');
+INSERT INTO `t_visitor` VALUES (4, 'aha', '2019/7/23', 'bilibili', 'super', '长春', '4', '4', '4');
 
 -- ----------------------------
 -- Table structure for t_visitposition
@@ -590,7 +707,36 @@ CREATE TABLE `t_visitposition`  (
   `fixedphone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '' COMMENT '固话',
   `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '' COMMENT 'EMAIL',
   `webchatqq` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '' COMMENT '微信/QQ',
+  `visitor_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '走访人员',
+  `time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '走访时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of t_visitposition
+-- ----------------------------
+INSERT INTO `t_visitposition` VALUES (1, 'join', '11111', '1111', '1111', '1111', '1', '1', 'xuwq', '2019/7/23');
+INSERT INTO `t_visitposition` VALUES (2, 'bilibili', '1111', '111', '1123', 'safdsa', '21', 'sdsad', 'aha', '2019/7/23');
+
+-- ----------------------------
+-- Table structure for users
+-- ----------------------------
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users`  (
+  `id` int(9) NOT NULL AUTO_INCREMENT,
+  `username` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `password` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `perms` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `role` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 44 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of users
+-- ----------------------------
+INSERT INTO `users` VALUES (1, 'zhangsan', '1234', 'user:add', '管理员');
+INSERT INTO `users` VALUES (11, 'test', 'test', 'user:add', '普通用户');
+INSERT INTO `users` VALUES (40, 'test', 'test1', 'user:', '我是汉字');
+INSERT INTO `users` VALUES (43, 'monkey', 'join2017', 'user:', '管理员');
 
 SET FOREIGN_KEY_CHECKS = 1;
